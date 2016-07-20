@@ -1,0 +1,8 @@
+<div *ngIf="item">
+    <h1>Selected Symbol</h1>
+    <h3>{{item.key.symbol}} | <a target="_blank" href="http://finance.yahoo.com/chart/{{item.key.symbol}}">Yahoo Charts</a></h3>
+    <h4>Screens</h4>
+    <li *ngFor="let screen of item.namedScreenSets">
+        <span>{{screen}}</span>
+    </li>
+</div>

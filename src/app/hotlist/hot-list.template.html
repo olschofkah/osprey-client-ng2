@@ -1,0 +1,29 @@
+<div class="page-header">
+    <h1>{{title}}</h1>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="list-unstyled">
+                <li *ngFor="let hotItemScreenSet of hotListItemsArray">
+
+                    <div class="well">
+                        <div class="panel-heading">
+                            {{hotItemScreenSet[0]?.groupedScreen}} | {{hotItemScreenSet?.length}}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div [ngClass]="{'btn-default': !hotItem.selected || hotItem.selected == false, 'btn-info': hotItem.selected && hotItem !== selectedItem, 'btn-primary': hotItem === selectedItem}"
+                            class="col-md-2 btn" *ngFor="let hotItem of hotItemScreenSet" (click)="onSelect(hotItem)">
+                            {{hotItem?.key.symbol}}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <hot-list-item [item]="selectedItem"></hot-list-item>
+        </div>
+    </div>
+</div>
