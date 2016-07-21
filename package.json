@@ -41,7 +41,8 @@
     "methods": "~1.1.2",
     "preboot": "^2.1.2",
     "rxjs": "5.0.0-beta.6",
-    "pg-io": "0.6.1"
+    "pg-io": "0.6.1",
+    "winston": "2.2.0"
   },
   "devDependencies": {
     "angular2-template-loader": "^0.4.0",

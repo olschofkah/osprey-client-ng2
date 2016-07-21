@@ -11,12 +11,20 @@ import { enableProdMode } from '@angular/core';
 // Angular 2 Universal
 import { expressEngine } from 'angular2-universal';
 
+import * as winston from 'winston';
+
 // enable prod for faster renders
 enableProdMode();
 
 
 
 const app = express();
+
+winston.level = 'debug';
+winston.add(winston.transports.File, { filename: './client-server.log' });
+
+winston.info('Logging levels set to ' + winston.level);
+
 const ROOT = path.join(path.resolve(__dirname, '..'));
 
 // Express View
@@ -28,8 +36,8 @@ app.use(cookieParser('Angular 2 Universal'));
 app.use(bodyParser.json());
 
 // Serve static files
-app.use('/assets', express.static(path.join(__dirname, 'assets'), {maxAge: 30}));
-app.use(express.static(path.join(ROOT, 'dist/client'), {index: false}));
+app.use('/assets', express.static(path.join(__dirname, 'assets'), { maxAge: 30 }));
+app.use(express.static(path.join(ROOT, 'dist/client'), { index: false }));
 
 import { getHotList } from './backend/api.service';
 
@@ -48,10 +56,10 @@ app.get('/hotlist/*', ngApp);
 function indexFile(req, res) {
   // when there is too much load on the server just send
   // the index.html without prerendering for client-only
-  res.sendFile('/index.html', {root: __dirname});
+  res.sendFile('/index.html', { root: __dirname });
 }
 
-app.get('*', function(req, res) {
+app.get('*', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   var pojo = { status: 404, message: 'No Content' };
   var json = JSON.stringify(pojo, null, 2);
@@ -60,5 +68,5 @@ app.get('*', function(req, res) {
 
 // Server
 app.listen(3000, () => {
-  console.log('Listening on: http://localhost:3000');
+  winston.info('Listening on: http://localhost:3000');
 });
