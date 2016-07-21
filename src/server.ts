@@ -16,14 +16,11 @@ import * as winston from 'winston';
 // enable prod for faster renders
 enableProdMode();
 
-
+winston.level = 'debug';
+winston.add(winston.transports.File, { filename: '/var/log/client-server.log' }); // TODO extract to config
+winston.info('Logging levels set to ' + winston.level);
 
 const app = express();
-
-winston.level = 'debug';
-winston.add(winston.transports.File, { filename: './client-server.log' });
-
-winston.info('Logging levels set to ' + winston.level);
 
 const ROOT = path.join(path.resolve(__dirname, '..'));
 

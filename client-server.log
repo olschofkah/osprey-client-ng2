@@ -76,3 +76,7 @@
 {"level":"debug","message":"db execution complete for: {\"text\":\"select array_to_json(array_agg(payload)) as aggpayload from tha_hot_shit where date = (select max(date) from tha_hot_shit);\",\"mask\":\"object\"}","timestamp":"2016-07-21T00:32:43.548Z"}
 {"level":"info","message":"Fetching latest hot shit for today ... ","timestamp":"2016-07-21T00:32:45.230Z"}
 {"level":"debug","message":"db execution complete for: {\"text\":\"select array_to_json(array_agg(payload)) as aggpayload from tha_hot_shit where date = (select max(date) from tha_hot_shit);\",\"mask\":\"object\"}","timestamp":"2016-07-21T00:32:45.277Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-21T00:37:01.526Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-21T00:37:01.594Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-21T00:37:56.075Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-21T00:37:56.143Z"}
