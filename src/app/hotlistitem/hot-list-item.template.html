@@ -1,8 +1,31 @@
 <div *ngIf="item">
-    <h1>Selected Symbol</h1>
-    <h3>{{item.key.symbol}} | <a target="_blank" href="http://finance.yahoo.com/chart/{{item.key.symbol}}">Yahoo Charts</a></h3>
+    <h3>{{item.key.symbol}} | {{summaryDetail?.companyname}} | <a target="_blank " href="http://finance.yahoo.com/chart/{{item.key.symbol}} ">Yahoo Charts</a></h3>
+    <div class="row">
+        <div class="col-md-3 text"><label>Last Price</label>: {{summaryDetail?.last | currency:'USD':true:'1.2-2' }}</div>
+        <div class="col-md-3 text" [ngClass]="{'text-danger': summaryDetail?.dayschangedollar < 0, 'text-success': summaryDetail?.dayschangedollar > 0}"><label>Days Change</label>: ({{summaryDetail?.dayschangedollar | currency:'USD':true:'1.2-2' }} | {{summaryDetail?.dayschangepct
+            | percent:'1.3' }})</div>
+        <div class="col-md-3 text" *ngIf="summaryDetail?.ebitda"><label>EBITDA</label>: {{summaryDetail?.ebitda / 1000000 | number: '.0'}}mm</div>
+        <div class="col-md-3 text" [ngClass]="{'text-danger': summaryDetail?.volume < summaryDetail?.averagevolume, 'text-success': summaryDetail?.volume > summaryDetail?.averagevolume}"><label>Volume</label>: {{summaryDetail?.volume }}</div>
+    </div>
+    <div class="row">
+        <span *ngIf="summaryDetail?.marketcap" class="col-md-3 text"><label>Mkt Cap</label>: {{summaryDetail?.marketcap / 1000000000 | number: '.0'}}B</span>
+        <span *ngIf="summaryDetail?.pctinsiders" class="col-md-3 text"><label>% Insiders</label>: {{summaryDetail?.pctinsiders | percent:'1.3' }}</span>
+        <span *ngIf="summaryDetail?.pctshortfloat" class="col-md-3 text"><label>% of float short</label>: {{summaryDetail?.pctshortfloat | percent:'1.3' }}</span>
+        <span class="col-md-3"><label>Avg Vol</label>: {{summaryDetail?.averagevolume }}</span>
+    </div>
+    <div class="row">
+        <span *ngIf="summaryDetail?.trailingpe" class="col-md-3 text"><label>Trailing PE</label>: {{summaryDetail?.trailingpe }}</span>
+        <span *ngIf="summaryDetail?.forwardpe" class="col-md-3 text"><label>Fwd PE</label>: {{summaryDetail?.forwardpe }}</span>
+        <span *ngIf="summaryDetail?.divyield" class="col-md-3 text"><label>Div Yield</label>: {{summaryDetail?.divyield | percent:'1.3' }}</span>
+    </div>
+    <div class="row">
+        <span *ngIf="summaryDetail?.nextexdate" class="col-md-3 text"><label>Next Ex Date</label>: {{summaryDetail?.nextexdate }}</span>
+        <span *ngIf="summaryDetail?.earningshighdate && summaryDetail?.earningslowdate" class="col-md-3 text"><label>Next Earnings Rg</label>: {{summaryDetail?.earningslowdate | date:'MMM-d' }} to {{summaryDetail?.earningshighdate | date:'MMM-d' }}</span>
+        <span *ngIf="!summaryDetail?.earningshighdate && summaryDetail?.earningslowdate" class="col-md-3 text"><label>Next Earnings</label>: {{summaryDetail?.earningslowdate | date:'MMM-d' }} </span>
+        <span *ngIf="summaryDetail?.earningshighdate && !summaryDetail?.earningslowdate" class="col-md-3 text"><label>Next Earnings</label>: {{summaryDetail?.earningshighdate | date:'MMM-d' }} </span>
+    </div>
     <h4>Screens</h4>
-    <li *ngFor="let screen of item.namedScreenSets">
+    <li *ngFor="let screen of item.namedScreenSets ">
         <span>{{screen}}</span>
     </li>
 </div>

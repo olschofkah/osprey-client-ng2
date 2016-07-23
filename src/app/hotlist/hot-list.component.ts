@@ -1,11 +1,13 @@
 
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgFor } from '@angular/common';
 
 import { HotListItem } from '../hotlistitem/hot-list-item'
 import { HotListItemComponent } from '../hotlistitem/hot-list-item.component'
 import { HotListService } from '../service/hot-list.service'
 import { Logger } from '../service/logger.service'
+import 'rxjs/Rx';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'hot-list',
@@ -33,7 +35,6 @@ export class HotList {
       this.selectedItem = item;
       item.selected = !item.selected;
     }
-
   }
 
   getList() {

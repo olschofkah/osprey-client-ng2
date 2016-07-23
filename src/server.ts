@@ -36,9 +36,15 @@ app.use(bodyParser.json());
 app.use('/assets', express.static(path.join(__dirname, 'assets'), { maxAge: 30 }));
 app.use(express.static(path.join(ROOT, 'dist/client'), { index: false }));
 
+// Osprey API Routes
+
 import { getHotList } from './backend/api.service';
+import { getDetailSummary } from './backend/api.service';
 
 app.get('/api/hot-list', getHotList);
+app.get('/api/detail-summary/:symbol', getDetailSummary);
+
+// END Osprey Api Routes
 
 import { ngApp } from './main.node';
 // Routes with html5pushstate
