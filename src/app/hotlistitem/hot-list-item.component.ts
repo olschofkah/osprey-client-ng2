@@ -1,7 +1,6 @@
 
 import { Component, Input, EventEmitter } from '@angular/core';
 import { HotListItem } from '../hotlistitem/hot-list-item'
-import { HotListItemContainer } from '../hotlistitem/hot-list-item-container'
 import { HotListService } from '../service/hot-list.service'
 import { Logger } from '../service/logger.service'
 import { NgFor, NgIf } from '@angular/common';
@@ -11,7 +10,7 @@ import {Observable} from 'rxjs/Observable';
   selector: 'hot-list-item',
   directives: [NgFor, NgIf],
   template: require('./hot-list-item.template.html'),
-  styles: [require('../../assets/bootstrap.min.css')]
+  styles: [require('../../assets/bootstrap.min.css'), require('../../assets/osprey.css')]
 })
 export class HotListItemComponent {
   public item: HotListItem;

@@ -31,7 +31,7 @@ export class XLarge {
     ...ROUTER_DIRECTIVES,
     XLarge
   ],
-  styles: [require('../assets/bootstrap.min.css')],
+  styles: [require('../assets/bootstrap.min.css'), require('../assets/osprey.css')],
   template: require('./app.template.html'),
   providers: [Logger]
 })

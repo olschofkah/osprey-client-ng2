@@ -74,7 +74,7 @@ export class OspreyRepository {
         pgsql.db(settings).connect().then((connection) => {
             return connection.execute(query)
                 .then((results) => {
-                    winston.debug("db execution complete for: " + JSON.stringify(query));
+                    winston.debug("db execution complete ...");
                     rh.handle(results);
                 })
                 .then(() => connection.release());

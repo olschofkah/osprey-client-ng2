@@ -8,8 +8,8 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class HotListService {
 
-    //private HOST: string = 'http://localhost:3000';
-    private HOST: string = 'http://ec2-52-90-66-65.compute-1.amazonaws.com:3000' // TODO Extract to config
+    private HOST: string = 'http://localhost:3000';
+    //private HOST: string = 'http://ec2-52-90-66-65.compute-1.amazonaws.com:3000' // TODO Extract to config
 
     private hotListUrl: string = this.HOST + '/api/hot-list';
     private detailSummaryUrl: string = this.HOST + '/api/detail-summary/';

@@ -13,7 +13,7 @@ import {Observable} from 'rxjs/Observable';
   selector: 'hot-list',
   directives: [NgFor, HotListItemComponent],
   template: require('./hot-list.template.html'),
-  styles: [require('../../assets/bootstrap.min.css')],
+  styles: [require('../../assets/bootstrap.min.css'), require('../../assets/osprey.css')],
   providers: [HotListService, Logger]
 })
 export class HotList {
