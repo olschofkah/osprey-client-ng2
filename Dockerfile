@@ -8,8 +8,6 @@ RUN npm install
 
 COPY . /usr/src/app
 
-VOLUME /var/log
-
 #EXPOSE 8080
 EXPOSE 3000
 
