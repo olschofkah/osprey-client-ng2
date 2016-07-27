@@ -22,14 +22,13 @@ export function getDetailSummary(req: Request, res: Response) {
 
 export function ensureAuthenticated(req: Request, res: Response, next): any {
 
+  console.log("Authorizing request for " + req.path + " ... Request Auth Status: " + req.isAuthenticated() + " sessionID:" + req.sessionID);
 
   if (req.isAuthenticated() && authorize(req)) {
     return next();
-  } else if (!req.isAuthenticated() && authorizeApi(req)) {
-    return next();
   } else {
     winston.warn('Login required for ' + req.path);
-    res.redirect('/auth/google');
+    res.redirect('/login');
   }
 }
 
@@ -40,31 +39,11 @@ function authorize(req: any): boolean {
   if (req.session.passport) {
     for (let i = 0; i < allowedUserIds.length; ++i) {
       if (allowedUserIds[i] === req.session.passport.user.id) {
-        winston.debug("Allowing access for " + allowedUserIds[i] + " to " + req.path + " ... Request Auth Status: " + req.isAuthenticated());
+        console.log("Allowing access for " + allowedUserIds[i] + " to " + req.path + " ... Request Auth Status: " + req.isAuthenticated() + " sessionID:" + req.sessionID);
         return true;
       }
     }
-    winston.warn("Rejecting web authorization for " + req.session.passport.user.id);
+    console.log("Rejecting web authorization for " + req.sessionID + " | " + req.session.passport.user.id);
   }
   return false;
-}
-
-function authorizeApi(req: any): boolean {
-
-  if (req.path.split("\/")[1] !== 'api') {
-    winston.warn("Request " + req.path + " not permitted for api access.");
-    return false;
-  }
-
-  // if (req.sessionStore.sessions) {
-
-  //   req.sessionStore.all(function (err, sessions) {
-  //     for (var i = 0; i < sessions.length; i++) {
-  //       req.sessionStore.get(sessions[i], function () { });
-  //     }
-  //   });
-  // }
-
-
-  return true;
 }

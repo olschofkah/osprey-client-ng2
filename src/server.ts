@@ -60,11 +60,11 @@ passport.use(new oauth.OAuth2Strategy({
 // example does not have a database, the complete google profile is serialized
 // and deserialized.
 passport.serializeUser((user, cb) => {
-  cb(null, user);
+  cb(null, user.id);
 });
 
-passport.deserializeUser((obj, cb) => {
-  cb(null, obj);
+passport.deserializeUser((id, cb) => {
+  cb(null, id);
 });
 
 // TODO Combind winston & morgan logging
@@ -73,6 +73,28 @@ passport.deserializeUser((obj, cb) => {
 //     winston.info(message);
 //   }
 // };
+
+
+
+// app.use((req, res, next) => {
+
+//   // Website you wish to allow to connect
+//   res.setHeader('Access-Control-Allow-Origin', config.get<string>('domain'));
+//   res.setHeader('Access-Control-Allow-Origin', 'https://accounts.google.com');
+
+//   // Request methods you wish to allow
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+//   // Request headers you wish to allow
+//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+//   // Set to true if you need the website to include cookies in the requests sent
+//   // to the API (e.g. in case you use sessions)
+//   res.setHeader('Access-Control-Allow-Credentials', 'true');
+
+//   // Pass to next layer of middleware
+//   next();
+// });
 
 app.use(require("morgan")("combined"));
 app.use(session({
@@ -114,15 +136,15 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 // Serve static files
 app.use('/assets', express.static(path.join(__dirname, 'assets'), { maxAge: 30 }));
 app.use(express.static(path.join(ROOT, 'dist/client'), { index: false }));
 
-// Osprey API Routes
 
-import { getHotList } from './backend/api.service';
-import { getDetailSummary } from './backend/api.service';
-import { ensureAuthenticated } from './backend/api.service';
+import { getHotList } from './backend/api.helper';
+import { getDetailSummary } from './backend/api.helper';
+import { ensureAuthenticated } from './backend/api.helper';
 
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
 app.get('/auth/logout', (req, res) => {
@@ -135,6 +157,13 @@ app.get('/auth/google/callback',
     res.redirect('/');
   });
 
+// Osprey API Routes
+
+app.get('/api/is-authenticated', (req, res) => {
+  let b: boolean = req.isAuthenticated();
+  winston.info("Authorizing request for " + req.path + " ... Request Auth Status: " + b + " sessionID:" + req.sessionID);
+  res.send(b);
+});
 app.get('/api/hot-list', ensureAuthenticated, getHotList);
 app.get('/api/detail-summary/:symbol', ensureAuthenticated, getDetailSummary);
 
@@ -146,6 +175,8 @@ import { ngApp } from './main.node';
 app.get('/', ngApp);
 app.get('/home', ngApp);
 app.get('/home/*', ngApp);
+app.get('/login', ngApp);
+app.get('/login/*', ngApp);
 app.get('/hotlist', ensureAuthenticated, ngApp);
 app.get('/hotlist/*', ensureAuthenticated, ngApp);
 app.get('/error/403', ensureAuthenticated, ngApp);

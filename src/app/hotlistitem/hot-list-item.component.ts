@@ -1,7 +1,7 @@
 
 import { Component, Input, EventEmitter } from '@angular/core';
 import { HotListItem } from '../hotlistitem/hot-list-item'
-import { HotListService } from '../service/hot-list.service'
+import { OspreyApiService } from '../service/osprey-api.service'
 import { Logger } from '../service/logger.service'
 import { NgFor, NgIf } from '@angular/common';
 import {Observable} from 'rxjs/Observable';
@@ -16,7 +16,7 @@ export class HotListItemComponent {
   public item: HotListItem;
   public summaryDetail: any;
 
-  constructor(private hotListService: HotListService, private log: Logger) {
+  constructor(private hotListService: OspreyApiService, private log: Logger) {
 
   }
 
@@ -29,7 +29,7 @@ export class HotListItemComponent {
 
   private load(symbol: String): void {
 
-    this.hotListService.getSummaryDetail(symbol)
+    this.hotListService.getStockSummaryDetail(symbol)
       .subscribe(
       data => {
         this.summaryDetail = data[0];

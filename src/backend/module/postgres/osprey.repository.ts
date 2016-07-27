@@ -84,7 +84,6 @@ export class OspreyRepository {
                     if (err) {
                         winston.error('error running query', err);
                     } else {
-                        console.log(result);
                         rh.handle(result.rows[0])
                     }
                 });

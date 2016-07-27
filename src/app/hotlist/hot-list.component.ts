@@ -4,7 +4,7 @@ import { NgFor } from '@angular/common';
 
 import { HotListItem } from '../hotlistitem/hot-list-item'
 import { HotListItemComponent } from '../hotlistitem/hot-list-item.component'
-import { HotListService } from '../service/hot-list.service'
+import { OspreyApiService } from '../service/osprey-api.service'
 import { Logger } from '../service/logger.service'
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
@@ -14,12 +14,12 @@ import {Observable} from 'rxjs/Observable';
   directives: [NgFor, HotListItemComponent],
   template: require('./hot-list.template.html'),
   styles: [require('../../assets/bootstrap.min.css'), require('../../assets/osprey.css')],
-  providers: [HotListService, Logger]
+  providers: [OspreyApiService, Logger]
 })
 export class HotList {
   title = 'tha hot shit';
 
-  constructor(private hotListService: HotListService, private log: Logger) {
+  constructor(private hotListService: OspreyApiService, private log: Logger) {
   }
 
   hotListItemsArray: any[] = [];
@@ -38,7 +38,7 @@ export class HotList {
   }
 
   getList() {
-    this.hotListService.getList()
+    this.hotListService.getHotList()
       .subscribe(
       data => {
         for (let i = 0; i < data.length; ++i) {

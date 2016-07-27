@@ -1,0 +1,300 @@
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T01:52:34.081Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T01:52:34.139Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T01:53:00.775Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T01:55:33.187Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T01:55:33.246Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T01:56:30.833Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T01:56:30.893Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T01:57:18.133Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T01:57:18.196Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T01:57:43.857Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T01:58:20.712Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:01:52.366Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:01:52.425Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T02:02:12.590Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T02:06:31.074Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:07:07.045Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:07:07.116Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T02:07:16.522Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:08:44.094Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:08:44.153Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T02:08:54.102Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:09:22.462Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:09:22.561Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:09:30.667Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:09:30.726Z"}
+{"level":"warn","message":"Request /hotlist not permitted for api access.","timestamp":"2016-07-27T02:09:42.884Z"}
+{"level":"warn","message":"Login required for /hotlist","timestamp":"2016-07-27T02:09:42.885Z"}
+{"level":"info","message":"Allowing access for 116305702049189009249 to /api/hot-list/ ... Request Auth Status: true","timestamp":"2016-07-27T02:09:48.330Z"}
+{"level":"info","message":"Fetching latest hot shit for today ... ","timestamp":"2016-07-27T02:09:48.332Z"}
+{"level":"info","message":"Allowing access for 116305702049189009249 to /api/detail-summary/AEL ... Request Auth Status: true","timestamp":"2016-07-27T02:10:00.156Z"}
+{"level":"info","message":"Fetching summary detail for AEL","timestamp":"2016-07-27T02:10:00.158Z"}
+{"level":"info","message":"Allowing access for 116305702049189009249 to /api/detail-summary/SM ... Request Auth Status: true","timestamp":"2016-07-27T02:10:14.385Z"}
+{"level":"info","message":"Fetching summary detail for SM","timestamp":"2016-07-27T02:10:14.386Z"}
+{"level":"info","message":"Allowing access for 116305702049189009249 to /api/detail-summary/SLCA ... Request Auth Status: true","timestamp":"2016-07-27T02:10:16.327Z"}
+{"level":"info","message":"Fetching summary detail for SLCA","timestamp":"2016-07-27T02:10:16.328Z"}
+{"level":"info","message":"Allowing access for 116305702049189009249 to /api/detail-summary/ENLK ... Request Auth Status: true","timestamp":"2016-07-27T02:10:17.891Z"}
+{"level":"info","message":"Fetching summary detail for ENLK","timestamp":"2016-07-27T02:10:17.892Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:11:38.932Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:11:38.994Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:11:54.547Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:11:54.617Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:12:15.933Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:12:15.994Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T02:12:29.179Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:13:50.636Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:13:50.697Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:14:37.255Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:14:37.312Z"}
+{"level":"info","message":"Authorizing request for /api/hot-list/ ... Request Auth Status: false sessionID:AqyX7zlP6rAHv66Rya0iwpiZQhx4gtKX","timestamp":"2016-07-27T02:15:01.660Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T02:15:01.661Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:15:46.768Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:15:46.827Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:20:45.962Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:20:46.028Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:27:39.885Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:27:39.944Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:29:23.479Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:29:23.539Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:32:00.085Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:32:00.143Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:34:35.554Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:34:35.612Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:36:22.099Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:36:22.184Z"}
+{"level":"info","message":"Authorizing request for /api/hot-list/ ... Request Auth Status: false sessionID:jI64MGlX0ElIYdefEJe6AvChL3Lh16nk","timestamp":"2016-07-27T02:36:26.219Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T02:36:26.221Z"}
+{"level":"info","message":"Authorizing request for /hotlist ... Request Auth Status: false sessionID:grfKOPoe12Vm3ABCQhdDZnCsnLgP5Xd4","timestamp":"2016-07-27T02:36:38.401Z"}
+{"level":"warn","message":"Login required for /hotlist","timestamp":"2016-07-27T02:36:38.401Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:37:28.751Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:37:28.815Z"}
+{"level":"info","message":"Authorizing request for /api/hot-list/ ... Request Auth Status: false sessionID:zAWbcAbr9TKa0KVtdzKlfoesrjgFrWQF","timestamp":"2016-07-27T02:37:41.518Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T02:37:41.519Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:41:29.655Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:41:29.718Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:41:42.957Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:41:43.023Z"}
+{"level":"info","message":"Authorizing request for /api/hot-list/ ... Request Auth Status: true sessionID:M1EKy37ye74gPxLzrInrThjYAkkdeuXU","timestamp":"2016-07-27T02:42:04.478Z"}
+{"level":"warn","message":"Rejecting web authorization for undefined","timestamp":"2016-07-27T02:42:04.481Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T02:42:04.484Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:43:36.218Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:43:36.283Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:43:51.320Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:43:51.383Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:44:18.019Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:44:18.078Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:46:37.488Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:46:37.550Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:47:23.993Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:47:24.062Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:47:46.703Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:47:46.783Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:48:28.050Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:48:28.122Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:51:08.062Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:51:08.126Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T02:51:11.391Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T02:51:11.449Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:04:34.380Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:04:34.438Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:04:56.372Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:04:56.429Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:08:00.623Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:08:00.725Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:08:48.338Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:08:48.401Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:09:05.543Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:09:05.613Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:09:31.403Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:09:31.460Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:12:03.101Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:12:03.161Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:17:22.127Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:17:22.186Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:22:16.215Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:22:16.274Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:25:48.049Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:25:48.108Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:28:09.169Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:28:09.229Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:28:25.045Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:28:25.103Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:30:46.790Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:30:46.853Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:31:07.337Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:31:07.397Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:32:22.342Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:32:22.410Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:32:30.381Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:32:30.441Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:33:48.337Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:33:48.431Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:35:00.697Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:35:00.758Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:36:36.635Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:36:36.736Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:37:47.923Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:37:47.984Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:47:52.610Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:47:52.670Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:48:01.474Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:48:01.540Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:50:30.896Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:50:30.969Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:52:43.584Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:52:43.658Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:52:48.132Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:52:48.204Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:53:14.652Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:53:14.713Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:58:11.836Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:58:11.897Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T03:59:00.187Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T03:59:00.248Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:01:12.179Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:01:12.247Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:01:19.673Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:01:19.736Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:02:10.040Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:02:10.100Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:03:44.148Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:03:44.215Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T04:03:49.002Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T04:03:50.188Z"}
+{"level":"warn","message":"Login required for /api/hot-list/","timestamp":"2016-07-27T04:03:50.689Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:04:57.309Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:04:57.379Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:07:05.941Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:07:06.011Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:15:57.022Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:15:57.079Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:21:00.512Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:21:00.585Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:21:06.154Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:21:06.219Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:21:08.529Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:21:08.592Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:21:11.573Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:21:11.639Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:22:23.533Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:22:23.595Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:22:27.349Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:22:27.410Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:23:03.052Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:23:03.135Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:23:07.299Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:23:07.376Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:23:20.867Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:23:20.929Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:24:04.463Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:24:04.593Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:26:42.690Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:26:42.756Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:26:55.432Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:26:55.499Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:28:18.115Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:28:18.175Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:28:37.344Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:28:37.406Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:28:59.947Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:29:00.011Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:29:05.454Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:29:05.525Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated/ ... Request Auth Status: false sessionID:Bn22R7beCprQGHgwwMgJaICxGdIxlX8o","timestamp":"2016-07-27T04:29:08.193Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated/ ... Request Auth Status: false sessionID:tLXZCImuujPwDJR4Qvpno6HmrUudNVcE","timestamp":"2016-07-27T04:29:09.315Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated/ ... Request Auth Status: false sessionID:nEg_9S1UvoqtP2SxPzwpTxZ-DcSnW9uQ","timestamp":"2016-07-27T04:29:17.682Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated/ ... Request Auth Status: true sessionID:tLXZCImuujPwDJR4Qvpno6HmrUudNVcE","timestamp":"2016-07-27T04:29:18.722Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated/ ... Request Auth Status: false sessionID:ckE7MKQ3V8mIBRQVMZyaKE8jDBuPz_3B","timestamp":"2016-07-27T04:29:24.100Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated/ ... Request Auth Status: true sessionID:tLXZCImuujPwDJR4Qvpno6HmrUudNVcE","timestamp":"2016-07-27T04:29:25.183Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated/ ... Request Auth Status: false sessionID:k51y7n55bz_lnDXAmHgyDt7r8sCoG0kL","timestamp":"2016-07-27T04:29:40.865Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated/ ... Request Auth Status: true sessionID:tLXZCImuujPwDJR4Qvpno6HmrUudNVcE","timestamp":"2016-07-27T04:29:41.919Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated/ ... Request Auth Status: false sessionID:jMYNRPG533IV39kD7tgqjkUv4MZzHTHZ","timestamp":"2016-07-27T04:29:44.175Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated/ ... Request Auth Status: true sessionID:tLXZCImuujPwDJR4Qvpno6HmrUudNVcE","timestamp":"2016-07-27T04:29:45.221Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:30:27.381Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:30:27.444Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:30:36.922Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:30:37.002Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated/ ... Request Auth Status: false sessionID:b3b11HbaUKnLXgLqVtGlHriS8ovSAImd","timestamp":"2016-07-27T04:30:43.165Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated/ ... Request Auth Status: false sessionID:50eLwInI8HHZ6HhnroFXmfVyqz_3N4FM","timestamp":"2016-07-27T04:30:44.293Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated/ ... Request Auth Status: false sessionID:w7mfEGJfagdH3OjNdbHcWXxDXyPm2D4E","timestamp":"2016-07-27T04:30:49.016Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated/ ... Request Auth Status: true sessionID:50eLwInI8HHZ6HhnroFXmfVyqz_3N4FM","timestamp":"2016-07-27T04:30:50.094Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:31:56.239Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:31:56.339Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:33:49.405Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:33:49.470Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:34:04.461Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:34:04.526Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:34:19.065Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:34:19.139Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:34:29.429Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:34:29.496Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:35:11.918Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:35:11.996Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:3t47fTXu1WV2nkYAofNmjNtqqBR4mGV3","timestamp":"2016-07-27T04:35:31.950Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:opcDIJ-XKPv4LAcRaWy3M_H7Cb_TyfrJ","timestamp":"2016-07-27T04:35:33.106Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:36:05.814Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:36:05.877Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:YzjBh0fAcHATXXfZZN9E7Lo8RHUr4JjJ","timestamp":"2016-07-27T04:36:06.257Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:BWsbHNAMeSvs_z9aeLiOSAf1oPYkvsP9","timestamp":"2016-07-27T04:36:07.405Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:5qD2Kxll7nQpWTSDgzNzmq6mvWKJSkgh","timestamp":"2016-07-27T04:36:14.055Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: true sessionID:BWsbHNAMeSvs_z9aeLiOSAf1oPYkvsP9","timestamp":"2016-07-27T04:36:15.108Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:37:13.784Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:37:13.862Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:aUa_trSR4vnXpPLUSQUsJCO7YKWDJ8k4","timestamp":"2016-07-27T04:37:22.553Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:ZW1t5XRbKKcJLXFWr0995pTHUJupXw4H","timestamp":"2016-07-27T04:37:23.704Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:KnBx2rntmnt5E5g_ZS5ZV92MauIiZWwA","timestamp":"2016-07-27T04:37:29.055Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: true sessionID:ZW1t5XRbKKcJLXFWr0995pTHUJupXw4H","timestamp":"2016-07-27T04:37:30.095Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:RufPXRUkciurQ3UtU0bgI_ssGyEFlL0W","timestamp":"2016-07-27T04:37:32.826Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: true sessionID:ZW1t5XRbKKcJLXFWr0995pTHUJupXw4H","timestamp":"2016-07-27T04:37:33.897Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:kl99QqhW4xy275xTTbvdI791U3uCvJur","timestamp":"2016-07-27T04:37:38.543Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: true sessionID:ZW1t5XRbKKcJLXFWr0995pTHUJupXw4H","timestamp":"2016-07-27T04:37:39.652Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:P337cn2MD5_p1LUayH_-5LUT78tXU8Cu","timestamp":"2016-07-27T04:38:44.445Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: true sessionID:ZW1t5XRbKKcJLXFWr0995pTHUJupXw4H","timestamp":"2016-07-27T04:38:45.579Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:bd3xQNj9cSaUmvt8N34LAaJXxtwuhNgb","timestamp":"2016-07-27T04:39:43.530Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: true sessionID:ZW1t5XRbKKcJLXFWr0995pTHUJupXw4H","timestamp":"2016-07-27T04:39:44.706Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:yOfWAvKZNA89rHj-CCevEtWhrCFhFOwU","timestamp":"2016-07-27T04:39:51.850Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: true sessionID:ZW1t5XRbKKcJLXFWr0995pTHUJupXw4H","timestamp":"2016-07-27T04:39:52.923Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:NHWxxYKNZKC86YNgBOqbS3pIl8lxNlR-","timestamp":"2016-07-27T04:39:55.132Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: true sessionID:ZW1t5XRbKKcJLXFWr0995pTHUJupXw4H","timestamp":"2016-07-27T04:39:56.190Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:ZDSKnjEpLsHipoaow54oQMte13dqAX5e","timestamp":"2016-07-27T04:39:58.686Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: true sessionID:ZW1t5XRbKKcJLXFWr0995pTHUJupXw4H","timestamp":"2016-07-27T04:39:59.750Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:KJtSDjWqa2GCYmv0cEV2pFn5SU3FYbc5","timestamp":"2016-07-27T04:40:26.372Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: true sessionID:ZW1t5XRbKKcJLXFWr0995pTHUJupXw4H","timestamp":"2016-07-27T04:40:27.395Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:42:04.600Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:42:04.661Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:42:23.686Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:42:23.748Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:RV1EVsFVd4hevPUktL9bBQfJ_gXgHE_E","timestamp":"2016-07-27T04:42:41.754Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:Kg-aBi_1NJ_lPF-l2wVizbCx1Y5tB8x8","timestamp":"2016-07-27T04:42:42.945Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:8jsRTQjaA0ftRgXolbEcCT5Pv9R5UXNe","timestamp":"2016-07-27T04:42:50.202Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: true sessionID:Kg-aBi_1NJ_lPF-l2wVizbCx1Y5tB8x8","timestamp":"2016-07-27T04:42:51.294Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: false sessionID:JTAktMJBH5ARzxbNliRhT7hInx3X2NO3","timestamp":"2016-07-27T04:42:53.965Z"}
+{"level":"info","message":"Authorizing request for /api/is-authenticated ... Request Auth Status: true sessionID:Kg-aBi_1NJ_lPF-l2wVizbCx1Y5tB8x8","timestamp":"2016-07-27T04:42:55.063Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:46:52.283Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:46:52.354Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:55:32.064Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:55:32.132Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:55:44.717Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:55:44.792Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:55:52.957Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:55:53.018Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:56:14.345Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:56:14.407Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:57:19.379Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:57:19.444Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:59:21.244Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:59:21.315Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T04:59:39.986Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T04:59:40.048Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T05:00:32.803Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T05:00:32.862Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T05:03:33.297Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T05:03:33.358Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T05:07:21.398Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T05:07:21.458Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T05:08:33.893Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T05:08:33.962Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T05:09:24.336Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T05:09:24.395Z"}
+{"level":"info","message":"Logging levels set to debug","timestamp":"2016-07-27T05:09:49.315Z"}
+{"level":"info","message":"Listening on: http://localhost:3000","timestamp":"2016-07-27T05:09:49.374Z"}
