@@ -1,0 +1,26 @@
+{
+    "googleOAuthConfig": {
+        "GOOGLE_CLIENT_ID": "930788637457-d7jb25vttl5bvrf5j8b3fl4gtlpodsqj.apps.googleusercontent.com",
+        "GOOGLE_CLIENT_SECRET": "WvJZDUUAN61wBgYdmpTI0pMp"
+    },
+    "serverLogFile": "./client-server.log",
+    "domain": "http://localhost:3000",
+    "allowedUserIds": [
+        "116305702049189009249"
+    ],
+    "pg": {
+        "conString": "postgresql://ospreynodeusr:@7wTASPfJ&gh@ospreydb.cl1fkmenjbzm.us-east-1.rds.amazonaws.com:5432/osprey01",
+        "config": {
+            "user": "ospreynodeusr", //env var: PGUSER
+            "database": "osprey01", //env var: PGDATABASE
+            "password": "@7wTASPfJ&gh", //env var: PGPASSWORD
+            "host": "ospreydb.cl1fkmenjbzm.us-east-1.rds.amazonaws.com",
+            "port": 5432, //env var: PGPORT
+            "max": 10, // max number of clients in the pool
+            "idleTimeoutMillis": 30000 // how long a client is allowed to remain idle before being closed
+        }
+    },
+    "angular2Client": {
+        
+    }
+}

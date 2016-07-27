@@ -1,7 +1,8 @@
 import { Component, Directive, ElementRef, Renderer } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Http } from '@angular/http';
-import { Logger } from './service/logger.service'
+import { Logger } from './service/logger.service';
+import { Config } from './service/config.service';
 
 // templateUrl example
 import { Home } from './home';
@@ -33,14 +34,15 @@ export class XLarge {
   ],
   styles: [require('../assets/bootstrap.min.css'), require('../assets/osprey.css')],
   template: require('./app.template.html'),
-  providers: [Logger]
+  providers: [Logger, Config]
 })
 export class App {
 
-  constructor(public http: Http, private log: Logger) { }
+  constructor(public http: Http, private log: Logger, private _config: Config) { }
 
   ngOnInit() {
     this.log.info("ng init ... ");
+    this.log.info("Config Settings | ENV: " + this._config.getEnv() + " Config: " + this._config.getAll());
   }
 
 }

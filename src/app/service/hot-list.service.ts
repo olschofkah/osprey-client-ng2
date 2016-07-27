@@ -1,20 +1,24 @@
-import { Injectable } from '@angular/core';
 import { HotListItem } from '../hotlistitem/hot-list-item'
 import { Logger } from '../service/logger.service'
+import { Config } from '../service/config.service'
 
+import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class HotListService {
 
-    private HOST: string = 'http://localhost:3000';
-    //private HOST: string = 'http://ec2-52-90-66-65.compute-1.amazonaws.com:3000' // TODO Extract to config
+    private domain: string;
+    private hotListUrl: string;
+    private detailSummaryUrl: string;
 
-    private hotListUrl: string = this.HOST + '/api/hot-list';
-    private detailSummaryUrl: string = this.HOST + '/api/detail-summary/';
+    constructor(private http: Http, private log: Logger, private _config: Config) {
+        this.domain = _config.getAll().domain;
 
-    constructor(private http: Http, private log: Logger) { }
+        this.hotListUrl = this.domain + '/api/hot-list/';
+        this.detailSummaryUrl = this.domain + '/api/detail-summary/';
+    }
 
     getList(): Observable<any> {
         this.log.info(this.hotListUrl)

@@ -1,31 +1,36 @@
 
-import * as pg from 'pg-io';
-import { PostgresResultHandler } from './result-handler.interface'
+import { PostgresResultHandler } from '../responsehandler/result-handler.interface'
 import * as winston from 'winston';
-
-const pgsql = pg;
-
-let settings = {
-    host: 'ospreydb.cl1fkmenjbzm.us-east-1.rds.amazonaws.com',
-    port: 5432,
-    user: 'ospreynodeusr',
-    password: '@7wTASPfJ&gh',
-    database: 'osprey01',
-    poolSize: 10
-}
+import * as config from 'config';
+import * as pg from 'pg';
 
 /**
  * https://github.com/herculesinc/pg-io
  * 
  */
 export class OspreyRepository {
+    pool: any;
+
+    constructor() {
+        this.pool = new pg.Pool(config.get<any>('pg.config'));
+
+        this.pool.on('error', function (err, client) {
+            // if an error is encountered by a client while it sits idle in the pool
+            // the pool itself will emit an error event with both the error and
+            // the client which emitted the original error
+            // this is a rare occurrence but can happen if there is a network partition
+            // between your application and the database, the database restarts, etc.
+            // and so you might want to handle it and at least log it out
+            winston.error('idle client error', err.message, err.stack)
+        })
+    }
 
     public findMostRecentHotlist(rh: PostgresResultHandler) {
         winston.info("Fetching latest hot shit for today ... ");
 
         let query = {
             text: 'select array_to_json(array_agg(payload)) as aggpayload from tha_hot_shit where date = (select max(date) from tha_hot_shit);',
-            mask: 'object'
+            params: []
         };
         return this.executeNoTx(query, rh);
     }
@@ -54,43 +59,37 @@ export class OspreyRepository {
                         n.next_earnings_date_est_low earningslowdate,
                         n.next_earnings_date_est_high earningshighdate
                         from	oc_security_quote q, oc_security_fundamental f, oc_security_next_events n, oc_security s
-                        where	q.symbol = {{symbolInput}}
+                        where	q.symbol = $1
                         and q.symbol = f.symbol
                         and q.symbol = n.symbol
                         and q.symbol = s.symbol
                         and f.last_update_ts = (select max(f2.last_update_ts) from oc_security_fundamental f2 where f2.symbol = f.symbol)
                         and q.timestamp = (select max(q2.timestamp) from oc_security_quote q2 where q2.symbol = q.symbol)
                     ) d;`,
-            mask: 'object',
-            params: {
-                symbolInput: symbol
-            },
+            params: [symbol]
         };
         return this.executeNoTx(query, rh);
     }
 
     private executeNoTx(query: any, rh: PostgresResultHandler) {
 
-        pgsql.db(settings).connect().then((connection) => {
-            return connection.execute(query)
-                .then((results) => {
-                    winston.debug("db execution complete ...");
-                    rh.handle(results);
-                })
-                .then(() => connection.release());
+        this.pool.connect((err, client, done) => {
+            if (err) {
+                winston.error('error fetching client from pool', err);
+            } else {
+                client.query(query.text, query.params, (err, result) => {
+                    //call `done()` to release the client back to the pool
+                    done();
+
+                    if (err) {
+                        winston.error('error running query', err);
+                    } else {
+                        console.log(result);
+                        rh.handle(result.rows[0])
+                    }
+                });
+            }
         });
     }
 
-    private execute(query: any, rh: PostgresResultHandler) {
-        return pgsql.db(settings).connect({ stratTransaction: true }).then((connection) => {
-
-            // execute the query
-            return connection.execute(query)
-                .then((results) => {
-                    rh.handle(results);
-                })
-                // release the connection back to the pool
-                .then(() => connection.release('commit'));
-        });
-    }
 }
