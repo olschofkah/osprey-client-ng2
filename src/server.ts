@@ -34,27 +34,23 @@ const app = express();
 passport.use(new oauth.OAuth2Strategy({
   clientID: config.get<string>('googleOAuthConfig.GOOGLE_CLIENT_ID'),
   clientSecret: config.get<string>('googleOAuthConfig.GOOGLE_CLIENT_SECRET'),
-  callbackURL: config.get<string>('domain') + "/auth/google/callback",
-  //passReqToCallback   : true
+  callbackURL: config.get<string>('domain') + "/auth/google/callback"
 
 }, (accessToken, refreshToken, profile, cb) => {
-  
+
   // Only allow specific IDs to continue; 
   if (profile) {
     for (let i = 0; i < allowedUserIds.length; ++i) {
       if (allowedUserIds[i] === profile.id) {
+        winston.info('Successful Authentication', profile);
         return cb(null, profile);
       }
     }
   }
-  cb(null, false, { message : 'invalid user' });
+  winston.info('Failed Authentication Attempt', profile);
+  cb(null, false, { message: 'invalid user' });
 }));
-// (request, accessToken, refreshToken, profile, done) => {
-//   User.findOrCreate({ googleId: profile.id }, (err, user) => {
-//     return done(err, user);
-//   });
-// }
-//));
+
 
 // Configure Passport authenticated session persistence.
 //
@@ -79,28 +75,6 @@ passport.deserializeUser((user, cb) => {
 //     winston.info(message);
 //   }
 // };
-
-
-
-// app.use((req, res, next) => {
-
-//   // Website you wish to allow to connect
-//   res.setHeader('Access-Control-Allow-Origin', config.get<string>('domain'));
-//   res.setHeader('Access-Control-Allow-Origin', 'https://accounts.google.com');
-
-//   // Request methods you wish to allow
-//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-//   // Request headers you wish to allow
-//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-//   // Set to true if you need the website to include cookies in the requests sent
-//   // to the API (e.g. in case you use sessions)
-//   res.setHeader('Access-Control-Allow-Credentials', 'true');
-
-//   // Pass to next layer of middleware
-//   next();
-// });
 
 app.use(require("morgan")("combined"));
 app.use(session({

@@ -7,7 +7,8 @@
     "domain": "http://localhost:3000",
     "allowedUserIds": [
         "116305702049189009249",
-        "116796067724549231787"
+        "116796067724549231787",
+        "102426699128335316977"
     ],
     "pg": {
         "conString": "postgresql://ospreynodeusr:@7wTASPfJ&gh@ospreydb.cl1fkmenjbzm.us-east-1.rds.amazonaws.com:5432/osprey01",
