@@ -1,4 +1,4 @@
-import { HotListService } from '../service/hot-list.service'
+import { OspreyApiService } from '../service/osprey-api.service'
 import { Logger } from '../service/logger.service'
 
 export class HotListItem {

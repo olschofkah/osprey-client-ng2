@@ -4,11 +4,11 @@
       <a class="navbar-brand" href="#">OV</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a *ngIf="authService.isLoggedIn" [routerLinkActive]="['active', 'active']" [routerLink]=" ['./hotlist'] ">Hot List</a></li>
+      <li><a *ngIf="authService.isLoggedIn == true" routerLinkActive="active" routerLink="/hotlist">Hot List</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a *ngIf="!authService.isLoggedIn" [routerLinkActive]="['active', 'active']" [routerLink]=" ['./login'] ">Log in</a></li>
-      <li><a *ngIf="authService.isLoggedIn" href="#" (click)="logout()">Log out</a></li>
+      <li><a *ngIf="authService.isLoggedIn == false" routerLinkActive="active" routerLink="/login">Log in</a></li>
+      <li><a *ngIf="authService.isLoggedIn == true" href="/auth/logout" >Log out</a></li>
     </ul>
   </div>
 </nav>

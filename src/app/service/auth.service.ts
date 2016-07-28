@@ -3,7 +3,6 @@
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
-import { Router } from '@angular/router';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
@@ -13,7 +12,7 @@ import { Logger } from './logger.service';
 
 @Injectable()
 export class AuthService {
-    constructor(private log: Logger, private apiService: OspreyApiService, public router: Router) { }
+    constructor(private log: Logger, private apiService: OspreyApiService) { }
 
     public isLoggedIn: boolean = false;
 
@@ -21,8 +20,8 @@ export class AuthService {
         this.log.info("Checking Auth State ... ");
         this.apiService.isAuthenticated().subscribe(
             data => {
-                this.log.info("Authentication State:", data);
                 this.isLoggedIn = data;
+                this.log.info('Auth\'d: ' + data);
             },
             err => {
                 this.log.error("An error occured fetching the auth status. ", err);

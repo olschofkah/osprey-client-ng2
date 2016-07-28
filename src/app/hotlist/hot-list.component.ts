@@ -10,7 +10,8 @@ import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
-  selector: 'hot-list',
+  moduleId: __filename,
+  selector: 'hotlist',
   directives: [NgFor, HotListItemComponent],
   template: require('./hot-list.template.html'),
   styles: [require('../../assets/bootstrap.min.css'), require('../../assets/osprey.css')],
@@ -63,7 +64,7 @@ export class HotList {
 
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.getList();
   }
 

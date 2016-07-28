@@ -5,7 +5,8 @@
     },
     "serverLogFile": "./client-server.log",
     "allowedUserIds": [
-        "116305702049189009249"
+        "116305702049189009249",
+        "116796067724549231787"
     ],
     "domain": "http://ec2-52-90-66-65.compute-1.amazonaws.com:3000",
     "pg": {

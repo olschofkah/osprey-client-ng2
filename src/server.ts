@@ -26,6 +26,8 @@ winston.level = 'debug';
 winston.add(winston.transports.File, { filename: config.get<string>('serverLogFile') });
 winston.info('Logging levels set to ' + winston.level);
 
+let allowedUserIds: string[] = config.get<string[]>('allowedUserIds');
+
 const app = express();
 
 // https://console.developers.google.com/apis/credentials?project=osprey-1383
@@ -36,12 +38,16 @@ passport.use(new oauth.OAuth2Strategy({
   //passReqToCallback   : true
 
 }, (accessToken, refreshToken, profile, cb) => {
-  // In this example, the user's google profile is supplied as the user
-  // record.  In a production-quality application, the google profile should
-  // be associated with a user record in the application's database, which
-  // allows for account linking and authentication with other identity
-  // providers.
-  return cb(null, profile);
+  
+  // Only allow specific IDs to continue; 
+  if (profile) {
+    for (let i = 0; i < allowedUserIds.length; ++i) {
+      if (allowedUserIds[i] === profile.id) {
+        return cb(null, profile);
+      }
+    }
+  }
+  cb(null, false, { message : 'invalid user' });
 }));
 // (request, accessToken, refreshToken, profile, done) => {
 //   User.findOrCreate({ googleId: profile.id }, (err, user) => {
@@ -60,11 +66,11 @@ passport.use(new oauth.OAuth2Strategy({
 // example does not have a database, the complete google profile is serialized
 // and deserialized.
 passport.serializeUser((user, cb) => {
-  cb(null, user.id);
+  cb(null, user);
 });
 
-passport.deserializeUser((id, cb) => {
-  cb(null, id);
+passport.deserializeUser((user, cb) => {
+  cb(null, user);
 });
 
 // TODO Combind winston & morgan logging
@@ -148,7 +154,9 @@ import { ensureAuthenticated } from './backend/api.helper';
 
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
 app.get('/auth/logout', (req, res) => {
+  winston.info("Logging out ... Request Auth Status: " + req.isAuthenticated() + " sessionID:" + req.sessionID);
   req.logout();
+  req.session.destroy();
   res.redirect('/');
 });
 app.get('/auth/google/callback',
@@ -169,18 +177,22 @@ app.get('/api/detail-summary/:symbol', ensureAuthenticated, getDetailSummary);
 
 // END Osprey Api Routes
 
-import { ngApp } from './main.node';
+// import { ngApp } from './main.node';
+
+let renderIndex = (req: express.Request, res: express.Response) => {
+  res.sendFile(path.resolve(__dirname, 'index.html'));
+}
 // Routes with html5pushstate
 // ensure routes match client-side-app
-app.get('/', ngApp);
-app.get('/home', ngApp);
-app.get('/home/*', ngApp);
-app.get('/login', ngApp);
-app.get('/login/*', ngApp);
-app.get('/hotlist', ensureAuthenticated, ngApp);
-app.get('/hotlist/*', ensureAuthenticated, ngApp);
-app.get('/error/403', ensureAuthenticated, ngApp);
-app.get('/error/403/*', ensureAuthenticated, ngApp);
+app.get('/', renderIndex);
+app.get('/home', renderIndex);
+app.get('/home/*', renderIndex);
+app.get('/login', renderIndex);
+app.get('/login/*', renderIndex);
+app.get('/hotlist', ensureAuthenticated, renderIndex);
+app.get('/hotlist/*', ensureAuthenticated, renderIndex);
+app.get('/error/403', renderIndex);
+app.get('/error/403/*', renderIndex);
 
 // use indexFile over ngApp only when there is too much load on the server
 function indexFile(req, res) {

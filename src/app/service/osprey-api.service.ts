@@ -16,9 +16,8 @@ export class OspreyApiService {
     private logoutUrl: string;
 
     constructor(private http: Http, private log: Logger, private _config: Config) {
-        let config: any = _config.getAll() || { domain: "http://localhost:3000" };
 
-        this.domain = config.domain;
+        this.domain = window.location.origin;
         this.isAuthenticatedUrl = this.domain + '/api/is-authenticated';
         this.hotListUrl = this.domain + '/api/hot-list';
         this.detailSummaryUrl = this.domain + '/api/detail-summary/';
