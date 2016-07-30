@@ -20,13 +20,22 @@ export function getBlackList(req: Request, res: Response) {
 
 export function persistBlackList(req: Request, res: Response) {
   let responseHandler = new DefaultResponseHandler(res);
-  console.log(JSON.stringify(req.body));
   _db.persistBlackList(JSON.stringify(req.body), responseHandler);
 }
 
 export function getDetailSummary(req: Request, res: Response) {
   let responseHandler = new ExpressRouteResponseResultHandler(res);
   _db.findDetailSummary(req.params.symbol, responseHandler);
+}
+
+export function getModelScreens(req: Request, res: Response) {
+  let responseHandler = new ExpressRouteResponseResultHandler(res);
+  _db.findModelScreens(responseHandler);
+}
+
+export function persistModelScreens(req: Request, res: Response) {
+  let responseHandler = new DefaultResponseHandler(res);
+  _db.persistModelScreens(JSON.stringify(req.body), responseHandler);
 }
 
 export function ensureAuthenticated(req: Request, res: Response, next): any {

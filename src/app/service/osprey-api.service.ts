@@ -16,6 +16,7 @@ export class OspreyApiService {
     private detailSummaryUrl: string;
     private logoutUrl: string;
     private blackListUrl: string;
+    private modelScreensUrl: string;
 
     constructor(private http: Http, private log: Logger, private _config: Config) {
 
@@ -23,6 +24,7 @@ export class OspreyApiService {
         this.isAuthenticatedUrl = this.domain + '/api/is-authenticated';
         this.hotListUrl = this.domain + '/api/hot-list';
         this.blackListUrl = this.domain + '/api/black-list';
+        this.modelScreensUrl = this.domain + '/api/model-screens';
         this.detailSummaryUrl = this.domain + '/api/detail-summary/';
 
         this.logoutUrl = this.domain + '/auth/logout';
@@ -47,11 +49,28 @@ export class OspreyApiService {
         this.log.info(this.blackListUrl);
         this.log.info(JSON.stringify(list));
 
-
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
         return this.http.put(this.blackListUrl, list, { headers: headers })
+            .toPromise();
+    }
+
+    getModelScreens(): Observable<any> {
+        this.log.info(this.modelScreensUrl);
+
+        return this.http.get(this.modelScreensUrl)
+            .map(res => res.json());
+    }
+
+    persistModelScreens(modelScreens: any): any {
+        this.log.info(this.modelScreensUrl);
+        this.log.info(JSON.stringify(modelScreens));
+
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        return this.http.put(this.modelScreensUrl, modelScreens, { headers: headers })
             .toPromise();
     }
 

@@ -46,11 +46,31 @@ export class OspreyRepository {
     }
 
     public persistBlackList(blackList: any, rh: PostgresResultHandler) {
-        winston.info("Fetching black list ... ");
+        winston.info("Updating black list ... ");
 
         let query = {
             text: 'update oc_map set timestamp = clock_timestamp(), obj_value = $1 where obj_key = \'black-list\';',
             params: [blackList]
+        };
+        return this.execute(query, rh);
+    }
+
+    public findModelScreens(rh: PostgresResultHandler) {
+        winston.info("Fetching model screens ... ");
+
+        let query = {
+            text: 'select obj_value as payload from oc_map where obj_key = \'screens\';',
+            params: []
+        };
+        return this.execute(query, rh);
+    }
+
+    public persistModelScreens(modelScreens: any, rh: PostgresResultHandler) {
+        winston.info("Updating model screens ... ");
+
+        let query = {
+            text: 'update oc_map set timestamp = clock_timestamp(), obj_value = $1 where obj_key = \'screens\';',
+            params: [modelScreens]
         };
         return this.execute(query, rh);
     }

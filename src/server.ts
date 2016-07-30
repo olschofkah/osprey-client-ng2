@@ -121,7 +121,8 @@ app.use(passport.session());
 app.use('/assets', express.static(path.join(__dirname, 'assets'), { maxAge: 30 }));
 app.use(express.static(path.join(ROOT, 'dist/client'), { index: false }));
 
-
+import { persistModelScreens } from './backend/api.helper';
+import { getModelScreens } from './backend/api.helper';
 import { persistBlackList } from './backend/api.helper';
 import { getBlackList } from './backend/api.helper';
 import { getHotList } from './backend/api.helper';
@@ -153,6 +154,8 @@ app.get('/api/hot-list', ensureAuthenticated, getHotList);
 app.get('/api/detail-summary/:symbol', ensureAuthenticated, getDetailSummary);
 app.get('/api/black-list', ensureAuthenticated, getBlackList);
 app.put('/api/black-list', ensureAuthenticated, persistBlackList);
+app.get('/api/model-screens', ensureAuthenticated, getModelScreens);
+app.put('/api/model-screens', ensureAuthenticated, persistModelScreens);
 
 // END Osprey Api Routes
 
@@ -168,6 +171,7 @@ app.get('/home', renderIndex);
 app.get('/login', renderIndex);
 app.get('/hotlist', ensureAuthenticated, renderIndex);
 app.get('/blacklist', ensureAuthenticated, renderIndex);
+app.get('/modelscreens', ensureAuthenticated, renderIndex);
 app.get('/error/403', renderIndex);
 
 // use indexFile over ngApp only when there is too much load on the server

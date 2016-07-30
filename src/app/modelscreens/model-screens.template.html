@@ -1,0 +1,18 @@
+<div class="page-header">
+    <h1>{{title}}</h1>
+</div>
+<div class="container-fluid fill">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-success" (click)="persist()">Save</button>
+        </div>
+        <div class="text text-right col-md-10">
+            For easy editing, copy, edit, and validate in viewer <a target="_blank " href="http://codebeautify.org/jsonviewer">#1</a>,
+            <a target="_blank " href="http://www.bodurov.com/JsonFormatter/">#2</a>, <a target="_blank " href="http://jsonviewer.stack.hu/">#3</a>.
+        </div>
+    </div>
+    <div class="well">
+        <h2 *ngIf="error">{{error}}</h2>
+        <textarea [(ngModel)]="models" class="form-control" style="min-height:512px; height:100%; width:100%"></textarea>
+    </div>
+</div>
