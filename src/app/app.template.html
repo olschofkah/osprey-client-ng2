@@ -10,7 +10,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a *ngIf="authService.isLoggedIn == false" routerLinkActive="active" routerLink="/login">Log in</a></li>
-      <li><a *ngIf="authService.isLoggedIn == true" href="/auth/logout" >Log out</a></li>
+      <li><a *ngIf="authService.isLoggedIn == true" href="/auth/logout">Log out</a></li>
     </ul>
   </div>
 </nav>
@@ -18,8 +18,7 @@
   <main>
     <router-outlet></router-outlet>
   </main>
+  <client-alert></client-alert>
 </div>
 <footer>
-  <br><br>
-  <div class="footer text-center text-uppercase">Never neglect details. When everyone's mind is dulled or distracted the leader must be doubly vigilant.</div>
 </footer>

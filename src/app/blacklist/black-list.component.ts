@@ -3,7 +3,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgFor } from '@angular/common';
 
 import { BlackListSymbol } from './black-list-symbol';
-import { OspreyApiService } from '../service/osprey-api.service'
+import { OspreyApiService } from '../service/osprey-api.service';
+import { ClientAlertService } from '../service/client-alert.service';
 import { Logger } from '../service/logger.service'
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
@@ -22,7 +23,7 @@ export class BlackList {
   private blackList: BlackListSymbol[] = [];
   private newSymbol: string;
 
-  constructor(private apiService: OspreyApiService, private log: Logger) {
+  constructor(private apiService: OspreyApiService, private log: Logger, private clientAlertService: ClientAlertService) {
   }
 
   getList() {
@@ -34,7 +35,7 @@ export class BlackList {
         }
       },
       err => {
-        this.log.error("An error occured fetching the black list. ", err);
+        this.clientAlertService.alertError("An error occured fetching the black list. " + err);
       },
       () => this.log.info('Black List Fetch Complete')
       );
@@ -44,18 +45,25 @@ export class BlackList {
   add(): void {
     this.blackList[this.blackList.length] = new BlackListSymbol(this.newSymbol.toUpperCase());
     this.newSymbol = "";
+    this.persistList();
   }
 
   remove(symbol: BlackListSymbol): void {
     let index = this.blackList.indexOf(symbol);
     if (index > -1) {
       this.blackList.splice(index, 1);
+      this.persistList();
     }
   }
 
   persistList() {
-    this.log.info("Updating Black List ... ");
-    this.apiService.persistBlackList(this.blackList);
+    this.apiService.persistBlackList(this.blackList)
+      .then((response) => {
+        this.clientAlertService.alertMsg('Black List Saved ... ');
+      })
+      .catch((err) => {
+        this.clientAlertService.alertError('Black List Failed to save due to ' + err);
+      });
   }
 
   ngAfterViewInit() {

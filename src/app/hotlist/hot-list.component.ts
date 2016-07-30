@@ -2,10 +2,11 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgFor } from '@angular/common';
 
-import { HotListItem } from '../hotlistitem/hot-list-item'
-import { HotListItemComponent } from '../hotlistitem/hot-list-item.component'
-import { OspreyApiService } from '../service/osprey-api.service'
-import { Logger } from '../service/logger.service'
+import { HotListItem } from '../hotlistitem/hot-list-item';
+import { HotListItemComponent } from '../hotlistitem/hot-list-item.component';
+import { OspreyApiService } from '../service/osprey-api.service';
+import { ClientAlertService } from '../service/client-alert.service';
+import { Logger } from '../service/logger.service';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 
@@ -20,7 +21,7 @@ import {Observable} from 'rxjs/Observable';
 export class HotList {
   title = 'tha hot shit';
 
-  constructor(private hotListService: OspreyApiService, private log: Logger) {
+  constructor(private hotListService: OspreyApiService, private log: Logger, private clientAlertService: ClientAlertService) {
   }
 
   hotListItemsArray: any[] = [];
@@ -57,7 +58,7 @@ export class HotList {
         }
       },
       err => {
-        this.log.error("An error occured fetching the hot list. ", err);
+        this.clientAlertService.alertError('An error occured fetching the hot list. ' + err);
       },
       () => this.log.info('Hot List Fetch Complete')
       );

@@ -45,9 +45,8 @@ export class OspreyApiService {
             .map(res => res.json());
     }
 
-    persistBlackList(list: BlackListSymbol[]): any {
+    persistBlackList(list: BlackListSymbol[]): Promise<any> {
         this.log.info(this.blackListUrl);
-        this.log.info(JSON.stringify(list));
 
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
@@ -65,7 +64,6 @@ export class OspreyApiService {
 
     persistModelScreens(modelScreens: any): any {
         this.log.info(this.modelScreensUrl);
-        this.log.info(JSON.stringify(modelScreens));
 
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');

@@ -3,8 +3,10 @@ import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { Logger } from './service/logger.service';
 import { Config } from './service/config.service';
-import { AuthService } from './service/auth.service'
-import { OspreyApiService } from './service/osprey-api.service'
+import { AuthService } from './service/auth.service';
+import { OspreyApiService } from './service/osprey-api.service';
+import { ClientAlertComponent } from './clientalert/client-alert.component';
+import { ClientAlertService } from './service/client-alert.service';
 import { NgIf } from '@angular/common';
 
 // templateUrl example
@@ -15,15 +17,15 @@ import { Home } from './home';
 @Component({
   selector: 'app', // <app></app>
   directives: [
-    ...ROUTER_DIRECTIVES
+    ...ROUTER_DIRECTIVES, ClientAlertComponent
   ],
   styles: [require('../assets/bootstrap.min.css'), require('../assets/osprey.css')],
   template: require('./app.template.html'),
-  providers: [Logger, Config, AuthService, OspreyApiService, NgIf]
+  providers: [Logger, Config, AuthService, OspreyApiService, ClientAlertService, NgIf]
 })
 export class App implements OnInit, AfterViewInit {
 
-  constructor(public http: Http, private log: Logger, private _config: Config, public authService: AuthService, public router:Router) { }
+  constructor(public http: Http, private log: Logger, private _config: Config, public authService: AuthService, public router: Router) { }
 
   ngOnInit() {
     this.log.info("ng init ... ");

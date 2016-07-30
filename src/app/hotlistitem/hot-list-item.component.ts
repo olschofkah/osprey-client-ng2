@@ -2,6 +2,7 @@
 import { Component, Input, EventEmitter } from '@angular/core';
 import { HotListItem } from '../hotlistitem/hot-list-item'
 import { OspreyApiService } from '../service/osprey-api.service'
+import { ClientAlertService } from '../service/client-alert.service'
 import { Logger } from '../service/logger.service'
 import { NgFor, NgIf } from '@angular/common';
 import {Observable} from 'rxjs/Observable';
@@ -16,7 +17,7 @@ export class HotListItemComponent {
   public item: HotListItem;
   public summaryDetail: any;
 
-  constructor(private hotListService: OspreyApiService, private log: Logger) {
+  constructor(private hotListService: OspreyApiService, private log: Logger, private clientAlertService: ClientAlertService) {
 
   }
 
