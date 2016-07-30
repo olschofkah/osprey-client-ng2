@@ -34,7 +34,7 @@ const app = express();
 passport.use(new oauth.OAuth2Strategy({
   clientID: config.get<string>('googleOAuthConfig.GOOGLE_CLIENT_ID'),
   clientSecret: config.get<string>('googleOAuthConfig.GOOGLE_CLIENT_SECRET'),
-  callbackURL: config.get<string>('domain') + "/auth/google/callback"
+  callbackURL: config.get<string>('domain') + "/auth/google/callback" // TODO use window.location.origin ??? 
 
 }, (accessToken, refreshToken, profile, cb) => {
 
