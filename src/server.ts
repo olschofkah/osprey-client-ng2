@@ -122,6 +122,8 @@ app.use('/assets', express.static(path.join(__dirname, 'assets'), { maxAge: 30 }
 app.use(express.static(path.join(ROOT, 'dist/client'), { index: false }));
 
 
+import { persistBlackList } from './backend/api.helper';
+import { getBlackList } from './backend/api.helper';
 import { getHotList } from './backend/api.helper';
 import { getDetailSummary } from './backend/api.helper';
 import { ensureAuthenticated } from './backend/api.helper';
@@ -146,8 +148,11 @@ app.get('/api/is-authenticated', (req, res) => {
   winston.info("Authorizing request for " + req.path + " ... Request Auth Status: " + b + " sessionID:" + req.sessionID);
   res.send(b);
 });
+
 app.get('/api/hot-list', ensureAuthenticated, getHotList);
 app.get('/api/detail-summary/:symbol', ensureAuthenticated, getDetailSummary);
+app.get('/api/black-list', ensureAuthenticated, getBlackList);
+app.put('/api/black-list', ensureAuthenticated, persistBlackList);
 
 // END Osprey Api Routes
 
@@ -160,13 +165,10 @@ let renderIndex = (req: express.Request, res: express.Response) => {
 // ensure routes match client-side-app
 app.get('/', renderIndex);
 app.get('/home', renderIndex);
-app.get('/home/*', renderIndex);
 app.get('/login', renderIndex);
-app.get('/login/*', renderIndex);
 app.get('/hotlist', ensureAuthenticated, renderIndex);
-app.get('/hotlist/*', ensureAuthenticated, renderIndex);
+app.get('/blacklist', ensureAuthenticated, renderIndex);
 app.get('/error/403', renderIndex);
-app.get('/error/403/*', renderIndex);
 
 // use indexFile over ngApp only when there is too much load on the server
 function indexFile(req, res) {

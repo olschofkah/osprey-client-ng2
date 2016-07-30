@@ -29,17 +29,37 @@ export class OspreyRepository {
         winston.info("Fetching latest hot shit for today ... ");
 
         let query = {
-            text: 'select array_to_json(array_agg(payload)) as aggpayload from tha_hot_shit where date = (select max(date) from tha_hot_shit);',
+            text: 'select array_to_json(array_agg(payload)) as payload from tha_hot_shit where date = (select max(date) from tha_hot_shit);',
             params: []
         };
-        return this.executeNoTx(query, rh);
+        return this.execute(query, rh);
+    }
+
+    public findBlackList(rh: PostgresResultHandler) {
+        winston.info("Fetching black list ... ");
+
+        let query = {
+            text: 'select obj_value as payload from oc_map where obj_key = \'black-list\';',
+            params: []
+        };
+        return this.execute(query, rh);
+    }
+
+    public persistBlackList(blackList: any, rh: PostgresResultHandler) {
+        winston.info("Fetching black list ... ");
+
+        let query = {
+            text: 'update oc_map set timestamp = clock_timestamp(), obj_value = $1 where obj_key = \'black-list\';',
+            params: [blackList]
+        };
+        return this.execute(query, rh);
     }
 
     public findDetailSummary(symbol: string, rh: PostgresResultHandler) {
         winston.info("Fetching summary detail for " + symbol);
 
         let query = {
-            text: `select array_to_json(array_agg(d)) as aggpayload from (
+            text: `select array_to_json(array_agg(d)) as payload from (
                         select 	f.symbol, 
                         s.company_name as companyname,
                         q.last as last, 
@@ -68,10 +88,10 @@ export class OspreyRepository {
                     ) d;`,
             params: [symbol]
         };
-        return this.executeNoTx(query, rh);
+        return this.execute(query, rh);
     }
 
-    private executeNoTx(query: any, rh: PostgresResultHandler) {
+    private execute(query: any, rh: PostgresResultHandler) {
 
         this.pool.connect((err, client, done) => {
             if (err) {

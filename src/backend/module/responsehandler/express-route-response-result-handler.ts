@@ -3,6 +3,11 @@ import { Response } from 'express';
 export class ExpressRouteResponseResultHandler {
     constructor(private res: Response) { }
     public handle(results: any) {
-        this.res.send(results.aggpayload);
+        if (results) {
+            this.res.send(results.payload);
+        } else {
+            // error?
+            this.res.sendStatus(404);
+        }
     }
 }

@@ -1,5 +1,6 @@
 
 import { ExpressRouteResponseResultHandler } from './module/responsehandler/express-route-response-result-handler';
+import { DefaultResponseHandler } from './module/responsehandler/default-response-handler';
 import { OspreyRepository } from './module/postgres/osprey.repository';
 import { Request, Response} from 'express';
 import * as winston from 'winston';
@@ -12,6 +13,17 @@ export function getHotList(req: Request, res: Response) {
   _db.findMostRecentHotlist(responseHandler);
 }
 
+export function getBlackList(req: Request, res: Response) {
+  let responseHandler = new ExpressRouteResponseResultHandler(res);
+  _db.findBlackList(responseHandler);
+}
+
+export function persistBlackList(req: Request, res: Response) {
+  let responseHandler = new DefaultResponseHandler(res);
+  console.log(JSON.stringify(req.body));
+  _db.persistBlackList(JSON.stringify(req.body), responseHandler);
+}
+
 export function getDetailSummary(req: Request, res: Response) {
   let responseHandler = new ExpressRouteResponseResultHandler(res);
   _db.findDetailSummary(req.params.symbol, responseHandler);
@@ -19,7 +31,7 @@ export function getDetailSummary(req: Request, res: Response) {
 
 export function ensureAuthenticated(req: Request, res: Response, next): any {
 
-  console.log("Authorizing request for " + req.path + " ... Request Auth Status: " + req.isAuthenticated() + " sessionID:" + req.sessionID);
+  winston.debug("Authorizing request for " + req.path + " ... Request Auth Status: " + req.isAuthenticated() + " sessionID:" + req.sessionID);
 
   if (req.isAuthenticated() && authorize(req)) {
     return next();
