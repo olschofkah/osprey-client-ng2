@@ -7,48 +7,51 @@ import { Subject }           from 'rxjs/Subject'; // TODO look at subjects more 
 
 @Injectable()
 export class ClientAlertService {
-    // private msg: Subject<string>;
-    public msg: string;
-    public errorMsg: string;
+
+    public msgs: string[] = [];
+    public errorMsgs: string[] = [];
 
     constructor(private log: Logger) {
 
     }
 
-    public alertMsg(incomingMsg: string) {
-        // this.msg
-        //     .asObservable()
-        //     .debounceTime(300)        // wait for 300ms pause in events
-        //     .distinctUntilChanged()   // ignore if next search term is same as previous
-        //     .switchMap(term => term   // switch to new observable each time
-        //         // return the http search observable
-        //         ? this.heroSearchService.search(term)
-        //         // or the observable of empty heroes if no search term
-        //         : Observable.of<Hero[]>([]))
-        //     .catch(error => {
-        //         // Todo: real error handling
-        //         console.log(error);
-        //         return Observable.of<Hero[]>([]);
-        //     });
+    public alertMsg(incomingMsg: string, obj?: any) {
 
-        this.msg = incomingMsg;
-        this.log.info(incomingMsg);
+        let fMsg: string;
+        if (obj) {
+            fMsg = incomingMsg + JSON.stringify(obj);
+            this.log.info(incomingMsg, obj);
+        } else {
+            fMsg = incomingMsg;
+            this.log.info(incomingMsg);
+        }
+
+        this.msgs.push(fMsg);
 
         new Promise<any>(resolve =>
             setTimeout(() => {
-                this.msg = null;
+                this.msgs.splice(0, 1);
             }, 3000) // 3 seconds
         );
 
     }
 
-    public alertError(incomingMsg: string) {
-        this.errorMsg = incomingMsg;
-        this.log.error(incomingMsg);
+    public alertError(incomingMsg: string, obj?: any) {
+
+        let fMsg: string;
+        if (obj) {
+            fMsg = incomingMsg + JSON.stringify(obj);
+            this.log.error(incomingMsg, obj);
+        } else {
+            fMsg = incomingMsg;
+            this.log.error(incomingMsg);
+        }
+
+        this.errorMsgs.push(fMsg);
 
         new Promise<any>(resolve =>
             setTimeout(() => {
-                this.errorMsg = null;
+                this.errorMsgs.splice(0, 1);
             }, 5000) // 5 seconds
         );
 

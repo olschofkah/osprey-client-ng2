@@ -1,11 +1,10 @@
-<div *ngIf="clientAlertService.errorMsg" class="panel panel-danger">
+<div *ngFor="let emsg of clientAlertService.errorMsgs" class="panel panel-danger">
     <div class="panel-heading text text-center">
-        <h4>{{clientAlertService.errorMsg}}</h4>
+        <h4>{{emsg}}</h4>
     </div>
 </div>
-
-<div *ngIf="clientAlertService.msg" class="panel panel-success">
+<div *ngFor="let msg of clientAlertService.msgs" class="panel panel-success">
     <div class="panel-heading text text-center">
-        <h4>{{clientAlertService.msg}}</h4>
+        <h4>{{msg}}</h4>
     </div>
 </div>
