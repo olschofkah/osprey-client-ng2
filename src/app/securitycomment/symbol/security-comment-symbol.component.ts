@@ -31,6 +31,7 @@ export class SecurityCommentSymbol {
     console.log(symbol);
     if (symbol) {
       this.symbol = symbol;
+      this.comments.splice(0, this.comments.length);
       this.getList();
     } else {
       this.comments = [];
