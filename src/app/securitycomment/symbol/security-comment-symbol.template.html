@@ -1,0 +1,18 @@
+<div *ngIf="symbol">
+    <h3>{{title}}</h3>
+    <div class="container-fluid fill">
+        <div>
+            <ul class="list-unstyled">
+                <div class="row" *ngFor="let item of comments">
+                    <div class="col-md-3">{{item.timestamp | date:'medium'}}</div>
+                    <div class="col-md-8 text">{{item.comment}}</div>
+                    <div class="col-md-1"><button class="btn btn-warning btn-sm" (click)="remove(item)">Remove</button></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-11"><textarea [(ngModel)]="newComment" placeholder="notes ... " class="form-control" style="width:100%"></textarea></div>
+                    <div class="col-md-1"><button class="btn btn-success btn-sm" (click)="add()">Add</button></div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>

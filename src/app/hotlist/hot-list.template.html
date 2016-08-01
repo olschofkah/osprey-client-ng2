@@ -23,7 +23,17 @@
             </ul>
         </div>
         <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-10">
+                    <input type="date" max="{{maxDate}}" [(ngModel)]="loadDate"/>
+                    <button class="btn" (click)="loadHistorical()">Load list for date</button>
+                </div>
+                <div class="col-md-2" *ngIf="selectedItem">
+                    <button class="btn btn-warning text text-right" (click)="deleteSelectedItem()">Ignore {{selectedItem.key.symbol}}</button>
+                </div>
+            </div>
             <hot-list-item [target]="selectedItem"></hot-list-item>
+            <security-comment-symbol [target]="selectedItem?.key?.symbol"></security-comment-symbol>
         </div>
     </div>
 </div>

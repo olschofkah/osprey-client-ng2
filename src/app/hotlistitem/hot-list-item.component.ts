@@ -17,7 +17,7 @@ export class HotListItemComponent {
   public item: HotListItem;
   public summaryDetail: any;
 
-  constructor(private hotListService: OspreyApiService, private log: Logger, private clientAlertService: ClientAlertService) {
+  constructor(private apiService: OspreyApiService, private log: Logger, private clientAlertService: ClientAlertService) {
 
   }
 
@@ -30,17 +30,16 @@ export class HotListItemComponent {
 
   private load(symbol: String): void {
 
-    this.hotListService.getStockSummaryDetail(symbol)
+    this.apiService.getStockSummaryDetail(symbol)
       .subscribe(
       data => {
         this.summaryDetail = data[0];
       },
       err => {
-        this.log.error("An error occured fetching the summary detail. ", err);
+        this.clientAlertService.alertError('An error occured fetching the summary detail.' + err);
       },
       () => this.log.info('Summary Detail load complete')
       );
   }
-
 
 }

@@ -7,6 +7,7 @@
       <li><a *ngIf="authService.isLoggedIn == true" routerLinkActive="active" routerLink="/hotlist">Hot List</a></li>
       <li><a *ngIf="authService.isLoggedIn == true" routerLinkActive="active" routerLink="/blacklist">Black List</a></li>
       <li><a *ngIf="authService.isLoggedIn == true" routerLinkActive="active" routerLink="/modelscreens">Models</a></li>
+      <li><a *ngIf="authService.isLoggedIn == true" routerLinkActive="active" routerLink="/notes">Notes</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a *ngIf="authService.isLoggedIn == false" routerLinkActive="active" routerLink="/login">Log in</a></li>

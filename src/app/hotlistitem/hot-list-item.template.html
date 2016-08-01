@@ -56,8 +56,12 @@
             </div>
         </div>
     </div>
-    <h4>Screens</h4>
-    <li *ngFor="let screen of item.namedScreenSets ">
-        <span>{{screen}}</span>
-    </li>
+    <br>
+    <div class="well well-sm">
+        <ul class="list-unstyled">
+            <li *ngFor=" let screen of item.namedScreenSets ">
+                <span>{{screen}}</span>
+            </li>
+        </ul>
+    </div>
 </div>

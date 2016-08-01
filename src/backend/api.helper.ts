@@ -13,6 +13,11 @@ export function getHotList(req: Request, res: Response) {
   _db.findMostRecentHotlist(responseHandler);
 }
 
+export function getHotListForDate(req: Request, res: Response) {
+  let responseHandler = new ExpressRouteResponseResultHandler(res);
+  _db.findHotlistForDate(req.params.date, responseHandler);
+}
+
 export function getBlackList(req: Request, res: Response) {
   let responseHandler = new ExpressRouteResponseResultHandler(res);
   _db.findBlackList(responseHandler);
@@ -21,6 +26,31 @@ export function getBlackList(req: Request, res: Response) {
 export function persistBlackList(req: Request, res: Response) {
   let responseHandler = new DefaultResponseHandler(res);
   _db.persistBlackList(JSON.stringify(req.body), responseHandler);
+}
+
+export function getSecurityComments(req: Request, res: Response) {
+  let responseHandler = new ExpressRouteResponseResultHandler(res);
+  _db.findSecurityComments(responseHandler);
+}
+
+export function getSecurityCommentsForSymbol(req: Request, res: Response) {
+  let responseHandler = new ExpressRouteResponseResultHandler(res);
+  _db.findSecurityCommentsForSymbol(req.params.symbol, responseHandler);
+}
+
+export function persistSecurityComment(req: Request, res: Response) {
+  let responseHandler = new DefaultResponseHandler(res);
+  _db.persistSecurityComment(req.body.symbol, req.body.comment, responseHandler);
+}
+
+export function deleteSecurityComment(req: Request, res: Response) {
+  let responseHandler = new DefaultResponseHandler(res);
+  _db.deleteSecurityComment(req.body.id, responseHandler);
+}
+
+export function deleteHotListForSymbolAndDate(req: Request, res: Response) {
+  let responseHandler = new DefaultResponseHandler(res);
+  _db.deleteHotlistItemForSymbolAndDate(req.body.symbol, req.body.reportDate, responseHandler);
 }
 
 export function getDetailSummary(req: Request, res: Response) {

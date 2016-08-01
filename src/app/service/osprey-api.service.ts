@@ -1,7 +1,8 @@
-import { HotListItem } from '../hotlistitem/hot-list-item'
-import { BlackListSymbol } from '../blacklist/black-list-symbol'
-import { Logger } from '../service/logger.service'
-import { Config } from '../service/config.service'
+import { HotListItem } from '../hotlistitem/hot-list-item';
+import { BlackListSymbol } from '../blacklist/black-list-symbol';
+import { SecurityComment } from '../securitycomment/security-comment';
+import { Logger } from '../service/logger.service';
+import { Config } from '../service/config.service';
 
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
@@ -17,6 +18,7 @@ export class OspreyApiService {
     private logoutUrl: string;
     private blackListUrl: string;
     private modelScreensUrl: string;
+    private securityCommentsUrl: string;
 
     constructor(private http: Http, private log: Logger, private _config: Config) {
 
@@ -25,7 +27,8 @@ export class OspreyApiService {
         this.hotListUrl = this.domain + '/api/hot-list';
         this.blackListUrl = this.domain + '/api/black-list';
         this.modelScreensUrl = this.domain + '/api/model-screens';
-        this.detailSummaryUrl = this.domain + '/api/detail-summary/';
+        this.detailSummaryUrl = this.domain + '/api/detail-summary';
+        this.securityCommentsUrl = this.domain + '/api/security-comments';
 
         this.logoutUrl = this.domain + '/auth/logout';
 
@@ -38,6 +41,22 @@ export class OspreyApiService {
             .map(res => res.json());
     }
 
+    getHotListForDate(date: Date): Observable<any> {
+        let url: string = this.hotListUrl + "/" + date;
+        this.log.info(url);
+
+        return this.http.get(url)
+            .map(res => res.json());
+    }
+
+    deleteHotListItem(item: HotListItem): Promise<any> {
+        this.log.info(this.hotListUrl);
+
+        return this.http
+            .put(this.hotListUrl, item, { headers: this.generateHeadersForPutOrPost() })
+            .toPromise();
+    }
+
     getBlackList(): Observable<any> {
         this.log.info(this.blackListUrl);
 
@@ -48,10 +67,8 @@ export class OspreyApiService {
     persistBlackList(list: BlackListSymbol[]): Promise<any> {
         this.log.info(this.blackListUrl);
 
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        return this.http.put(this.blackListUrl, list, { headers: headers })
+        return this.http
+            .put(this.blackListUrl, list, { headers: this.generateHeadersForPutOrPost() })
             .toPromise();
     }
 
@@ -65,10 +82,8 @@ export class OspreyApiService {
     persistModelScreens(modelScreens: any): any {
         this.log.info(this.modelScreensUrl);
 
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        return this.http.put(this.modelScreensUrl, modelScreens, { headers: headers })
+        return this.http
+            .put(this.modelScreensUrl, modelScreens, { headers: this.generateHeadersForPutOrPost() })
             .toPromise();
     }
 
@@ -86,10 +101,48 @@ export class OspreyApiService {
             .map(res => res.json());
     }
 
-    getStockSummaryDetail(symbol: String) {
-        this.log.info(this.detailSummaryUrl + symbol);
+    getStockSummaryDetail(symbol: String): Observable<any> {
+        let url: string = this.detailSummaryUrl + "/" + symbol;
+        this.log.info(url);
 
-        return this.http.get(this.detailSummaryUrl + symbol)
+        return this.http.get(url)
             .map(res => res.json());
+    }
+
+    getSecurityCommentsForSymbol(symbol: String): Observable<any> {
+        let url: string = this.securityCommentsUrl + "/" + symbol;
+        this.log.info(url);
+
+        return this.http.get(url)
+            .map(res => res.json());
+    }
+
+    getSecurityComments(): Observable<any> {
+        this.log.info(this.securityCommentsUrl);
+
+        return this.http.get(this.securityCommentsUrl)
+            .map(res => res.json());
+    }
+
+    insertSecurityComment(comment: SecurityComment): Promise<any> {
+        this.log.info(this.securityCommentsUrl);
+
+        return this.http
+            .post(this.securityCommentsUrl, comment, { headers: this.generateHeadersForPutOrPost() })
+            .toPromise();
+    }
+
+    deleteSecurityComment(comment: SecurityComment): Promise<any> {
+        this.log.info(this.securityCommentsUrl);
+
+        return this.http
+            .put(this.securityCommentsUrl, comment, { headers: this.generateHeadersForPutOrPost() })
+            .toPromise();
+    }
+
+    private generateHeadersForPutOrPost(): Headers {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return headers;
     }
 }

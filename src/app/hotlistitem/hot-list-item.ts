@@ -9,8 +9,9 @@ export class HotListItem {
     public namedScreenSets: string[],
     public strategies: string[],
     public groupedScreen: string,
-    public selected: boolean) {
-    
+    public selected: boolean,
+    public deleted: boolean) {
+
   }
 
 

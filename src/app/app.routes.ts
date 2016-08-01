@@ -2,6 +2,7 @@ import { RouterConfig } from '@angular/router';
 import { Home } from './home';
 import { HotList } from './hotlist';
 import { BlackList } from './blacklist';
+import { SecurityCommentMaster } from './securitycomment';
 import { ModelScreens } from './modelscreens';
 import { Login } from './login';
 
@@ -17,6 +18,7 @@ export const routes: RouterConfig = [
   { path: 'hotlist', component: HotList }, // canActivate: [AuthGuard]
   { path: 'blacklist', component: BlackList },
   { path: 'modelscreens', component: ModelScreens },
+  { path: 'notes', component: SecurityCommentMaster },
   { path: 'error/403', component: _403Error },
   { path: '**', redirectTo: 'home' }
 ];

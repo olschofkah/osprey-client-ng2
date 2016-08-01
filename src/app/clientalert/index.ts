@@ -1,1 +1,1 @@
-export * from './hot-list-item.component';
+export * from './client-alert.component';

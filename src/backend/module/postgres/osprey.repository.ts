@@ -29,8 +29,30 @@ export class OspreyRepository {
         winston.info("Fetching latest hot shit for today ... ");
 
         let query = {
-            text: 'select array_to_json(array_agg(payload)) as payload from tha_hot_shit where date = (select max(date) from tha_hot_shit);',
+            text: 'select array_to_json(array_agg(payload)) as payload from tha_hot_shit where deleted = FALSE and date = (select max(date) from tha_hot_shit);',
             params: []
+        };
+        return this.execute(query, rh);
+    }
+
+    public findHotlistForDate(date: Date, rh: PostgresResultHandler) {
+        winston.info("Fetching latest hot shit for today ... ");
+
+        let query = {
+            text: 'select array_to_json(array_agg(payload)) as payload from tha_hot_shit where date = $1;',
+            params: [date]
+        };
+        return this.execute(query, rh);
+    }
+
+    public deleteHotlistItemForSymbolAndDate(symbol: string, date: Date, rh: PostgresResultHandler) {
+        winston.debug("deleting hotlist for symbol " + symbol + " and date " + date);
+
+        let query = {
+            text: `update tha_hot_shit 
+            set deleted = TRUE, timestamp = clock_timestamp(), 
+            where symbol = $1 and report_date = $2`,
+            params: [symbol, date]
         };
         return this.execute(query, rh);
     }
@@ -46,7 +68,7 @@ export class OspreyRepository {
     }
 
     public persistBlackList(blackList: any, rh: PostgresResultHandler) {
-        winston.info("Updating black list ... ");
+        winston.debug("Updating black list ... ");
 
         let query = {
             text: 'update oc_map set timestamp = clock_timestamp(), obj_value = $1 where obj_key = \'black-list\';',
@@ -56,7 +78,7 @@ export class OspreyRepository {
     }
 
     public findModelScreens(rh: PostgresResultHandler) {
-        winston.info("Fetching model screens ... ");
+        winston.debug("Fetching model screens ... ");
 
         let query = {
             text: 'select obj_value as payload from oc_map where obj_key = \'screens\';',
@@ -66,11 +88,57 @@ export class OspreyRepository {
     }
 
     public persistModelScreens(modelScreens: any, rh: PostgresResultHandler) {
-        winston.info("Updating model screens ... ");
+        winston.debug("Updating model screens ... ");
 
         let query = {
             text: 'update oc_map set timestamp = clock_timestamp(), obj_value = $1 where obj_key = \'screens\';',
             params: [modelScreens]
+        };
+        return this.execute(query, rh);
+    }
+
+    public findSecurityComments(rh: PostgresResultHandler): void {
+        winston.debug("Finding security comments ... ");
+
+        let query = {
+            text: `select array_to_json(array_agg(d)) as payload from
+             (select id, symbol, timestamp, comment from oc_security_comment where deleted = FALSE order by timestamp desc) d;
+            `,
+            params: []
+        };
+        return this.execute(query, rh);
+    }
+
+    public findSecurityCommentsForSymbol(symbol: string, rh: PostgresResultHandler): void {
+        winston.debug("Finding security comments for " + symbol);
+
+        let query = {
+            text: `select array_to_json(array_agg(d)) as payload from
+             (select symbol, timestamp, comment from oc_security_comment where deleted = FALSE and symbol = $1) d;
+            `,
+            params: [symbol]
+        };
+        return this.execute(query, rh);
+    }
+
+    public persistSecurityComment(symbol: string, comment: string, rh: PostgresResultHandler) {
+        winston.debug("Inserting security comments for " + symbol);
+
+        let query = {
+            text: `insert into oc_security_comment (symbol, timestamp, comment) values ($1, clock_timestamp(), $2) `,
+            params: [symbol, comment]
+        };
+        return this.execute(query, rh);
+    }
+
+    public deleteSecurityComment(id: number, rh: PostgresResultHandler) {
+        winston.debug("deleting security comment " + id);
+
+        let query = {
+            text: `update oc_security_comment 
+            set deleted = TRUE, timestamp = clock_timestamp() 
+            where id = $1`,
+            params: [id]
         };
         return this.execute(query, rh);
     }
@@ -124,6 +192,7 @@ export class OspreyRepository {
                     if (err) {
                         winston.error('error running query', err);
                     } else {
+                        console.log(result.rows[0]);
                         rh.handle(result.rows[0])
                     }
                 });
