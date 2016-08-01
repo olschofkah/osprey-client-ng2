@@ -39,7 +39,7 @@ export class OspreyRepository {
         winston.info("Fetching latest hot shit for today ... ");
 
         let query = {
-            text: 'select array_to_json(array_agg(payload)) as payload from tha_hot_shit where date = $1;',
+            text: 'select array_to_json(array_agg(payload)) as payload from tha_hot_shit where deleted = FALSE and date = $1;',
             params: [date]
         };
         return this.execute(query, rh);
@@ -50,8 +50,8 @@ export class OspreyRepository {
 
         let query = {
             text: `update tha_hot_shit 
-            set deleted = TRUE, timestamp = clock_timestamp(), 
-            where symbol = $1 and report_date = $2`,
+            set deleted = TRUE, timestamp = clock_timestamp()
+            where symbol = $1 and date = $2`,
             params: [symbol, date]
         };
         return this.execute(query, rh);

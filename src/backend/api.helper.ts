@@ -50,7 +50,7 @@ export function deleteSecurityComment(req: Request, res: Response) {
 
 export function deleteHotListForSymbolAndDate(req: Request, res: Response) {
   let responseHandler = new DefaultResponseHandler(res);
-  _db.deleteHotlistItemForSymbolAndDate(req.body.symbol, req.body.reportDate, responseHandler);
+  _db.deleteHotlistItemForSymbolAndDate(req.body.key.symbol, req.body.reportDate, responseHandler);
 }
 
 export function getDetailSummary(req: Request, res: Response) {
