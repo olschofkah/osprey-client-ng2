@@ -47,10 +47,10 @@
                 <div *ngIf="!summaryDetail?.nextexdate" class="col-md-3 text"></div>
                 <div *ngIf="summaryDetail?.nextexdate" class="col-md-3 text"><label>Next Ex Date</label>: {{summaryDetail?.nextexdate }}</div>
                 <div *ngIf="!summaryDetail?.earningshighdate && !summaryDetail?.earningslowdate" class="col-md-3 text"></div>
-                <div *ngIf="summaryDetail?.earningshighdate && summaryDetail?.earningslowdate" class="col-md-3 text"><label>Next Earnings Rg</label>: {{summaryDetail?.earningslowdate | date:'MMM-d' }} to {{summaryDetail?.earningshighdate
-                    | date:'MMM-d' }}</div>
-                <div *ngIf="!summaryDetail?.earningshighdate && summaryDetail?.earningslowdate" class="col-md-3 text"><label>Next Earnings</label>: {{summaryDetail?.earningslowdate | date:'MMM-d' }} </div>
-                <div *ngIf="summaryDetail?.earningshighdate && !summaryDetail?.earningslowdate" class="col-md-3 text"><label>Next Earnings</label>: {{summaryDetail?.earningshighdate | date:'MMM-d' }} </div>
+                <div *ngIf="summaryDetail?.earningshighdate && summaryDetail?.earningslowdate" class="col-md-3 text"><label>Next Earnings Rg</label>: {{summaryDetail?.earningslowdate}} to {{summaryDetail?.earningshighdate
+                    }}</div>
+                <div *ngIf="!summaryDetail?.earningshighdate && summaryDetail?.earningslowdate" class="col-md-3 text"><label>Next Earnings</label>: {{summaryDetail?.earningslowdate }} </div>
+                <div *ngIf="summaryDetail?.earningshighdate && !summaryDetail?.earningslowdate" class="col-md-3 text"><label>Next Earnings</label>: {{summaryDetail?.earningshighdate }} </div>
                 <div class="col-md-3 text"></div>
                 <div class="col-md-3 text"></div>
             </div>
