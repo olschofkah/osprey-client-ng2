@@ -1,5 +1,5 @@
 <div *ngIf="item">
-    <h3>{{item.key.symbol}} | {{summaryDetail?.companyname}}</h3>
+    <h3><strong>{{item.key.symbol}}</strong> | {{summaryDetail?.companyname}} | {{summaryDetail?.instrumenttype}} | {{summaryDetail?.sector}} | {{summaryDetail?.industry}}</h3>
     <div class="row well well-sm">
         <div class="col-md-3"><a target="_blank " href="http://finance.yahoo.com/chart/{{item.key.symbol}} ">Yahoo</a></div>
         <div class="col-md-3"><a target="_blank " href="http://stockcharts.com/h-sc/ui?s={{item.key.symbol}} ">Stock Charts</a></div>
@@ -48,7 +48,8 @@
                 <div *ngIf="summaryDetail?.nextexdate" class="col-md-3 text"><label>Next Ex Date</label>: {{summaryDetail?.nextexdate }}</div>
                 <div *ngIf="!summaryDetail?.earningshighdate && !summaryDetail?.earningslowdate" class="col-md-3 text"></div>
                 <div *ngIf="summaryDetail?.earningshighdate && summaryDetail?.earningslowdate" class="col-md-3 text"><label>Next Earnings Rg</label>: {{summaryDetail?.earningslowdate}} to {{summaryDetail?.earningshighdate
-                    }}</div>
+                    }}
+                </div>
                 <div *ngIf="!summaryDetail?.earningshighdate && summaryDetail?.earningslowdate" class="col-md-3 text"><label>Next Earnings</label>: {{summaryDetail?.earningslowdate }} </div>
                 <div *ngIf="summaryDetail?.earningshighdate && !summaryDetail?.earningslowdate" class="col-md-3 text"><label>Next Earnings</label>: {{summaryDetail?.earningshighdate }} </div>
                 <div class="col-md-3 text"></div>

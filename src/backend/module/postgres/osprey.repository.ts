@@ -150,6 +150,9 @@ export class OspreyRepository {
             text: `select array_to_json(array_agg(d)) as payload from (
                         select 	f.symbol, 
                         s.company_name as companyname,
+                        s.sector,
+                        s.industry,
+                        case when instrument_cd = 0 then 'Stock' when instrument_cd = 33 then 'ETF' else 'Other' end as instrumenttype, 
                         q.last as last, 
                         f.ebitda,
                         q.last - s.previous_close as dayschangedollar, 

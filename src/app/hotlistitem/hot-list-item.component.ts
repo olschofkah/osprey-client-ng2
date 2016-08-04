@@ -34,6 +34,8 @@ export class HotListItemComponent {
       .subscribe(
       data => {
         this.summaryDetail = data[0];
+        this.summaryDetail.companyname = this.summaryDetail.companyname.replace('&apos;','\'').replace('&amp;','&');
+
       },
       err => {
         this.clientAlertService.alertError('An error occured fetching the summary detail.' + err);
