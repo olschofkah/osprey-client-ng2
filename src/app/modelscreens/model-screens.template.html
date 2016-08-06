@@ -15,4 +15,45 @@
         <h2 *ngIf="error">{{error}}</h2>
         <textarea [(ngModel)]="models" class="form-control" style="min-height:512px; height:100%; width:100%"></textarea>
     </div>
+    <div>
+        <h2>Screen Inventory</h2>
+        <h4 class="text text-primary">Specific</h4>
+        {"criteriaBucket":{"type":"INSTRUMENT_TYPE","instrumentTypes":["ETF","ETN"], "contains":true} }
+        <br>{"criteriaBucket":{"type":"SYMBOL","symbols":["QQQ","SPY"],"contains":true} }
+
+        <h4 class="text text-primary">Moving Averages</h4>
+        {"criteriaBucket":{"type":"EMA","period1":10,"period2":50,"relationalOperator":"_GT"} }
+        <br>{"criteriaBucket":{"type":"EMA_PCT_BANDS","period1":20,"range":2,"bandPercent":0.03,"direction":"FROM_BELOW_TO_ABOVE","band":"LOWER_BAND"} }
+        <br>{"criteriaBucket":{"type":"EMA_VS_PRICE","period1":15,"relationalOperator":"_LT"} }
+        <br>{"criteriaBucket":{"type":"EMA_X","period1":15,"period2":50,"range":2,"direction":"FROM_ABOVE_TO_BELOW"} }
+        <br>{"criteriaBucket":{"type":"EMA_X_PRICE","period1":20,"range":2,"direction":"FROM_ABOVE_TO_BELOW"} }
+        <br>{"criteriaBucket":{"type":"MACD","fastPeriod":12,"slowPeriod":26,"signalPeriod":9,"range":2,"direction":"FROM_ABOVE_TO_BELOW"} }
+        <br>{"criteriaBucket":{"type":"MACD_DIVERGANCE","fastPeriod":12,"slowPeriod":26,"signalPeriod":9,"range":2,"divergance":0.5,"relationalOperator":"_GT"} }
+        <br>{"criteriaBucket":{"type":"SMA","period1":10,"period2":50,"relationalOperator":"_GT"} }
+
+        <h4 class="text text-primary">Price Calcs</h4>
+        {"criteriaBucket":{"type":"_52_PCT","percent":0.9,"relationalOperator":"_GT"} }
+        <br>{"criteriaBucket":{"type":"GAP_UP_DOWN","percentGap":0.03,"direction":"GAP_UP","relationalOperator":"_GT"} }
+        <br>{"criteriaBucket":{"type":"PRICE","price":10,"relationalOperator":"_GT"} }
+        <br>{"criteriaBucket":{"type":"PRICE_CHANGE","period":20,"percentChange":0.03,"relationalOperator":"_GT"} }
+        <br>{"criteriaBucket":{"type":"VOLATILITY","period":252,"volatilityComparison":0.5,"relationalOperator":"_GE"} }
+
+        <h4 class="text text-primary">Volume Calcs</h4>
+        {"criteriaBucket":{"type":"DOLLAR_VOLUME","dollarVolumeComparison":1000000000,"range":2,"relationalOperator":"_GT"} }
+        <br>{"criteriaBucket":{"type":"VOLUME_COMPARISON","period1":20,"period2":88,"relationalOperator":"_GT"} }
+        <br>{"criteriaBucket":{"type":"VOLUME","volumeComparison":1000000,"range":2,"relationalOperator":"_GT"} }
+        <br>{"criteriaBucket":{"type":"VOLUME_AVG","benchmarkVolume":1000000,"period":30,"relationalOperator":"_GT"} }
+
+        <h4 class="text text-primary">Momentum</h4>
+        {"criteriaBucket":{"type":"MOMENTUM_X","period1":2,"range":2,"crossoverPoint":0,"direction":"FROM_BELOW_TO_ABOVE"} }
+        <br>{"criteriaBucket":{"type":"RSI","period":14,"periodRange":5,"rsiComparison":70,"relationalOperator":"_GE"} }
+
+        <h4 class="text text-primary">Fundamentals</h4>
+        {"criteriaBucket":{"type":"BETA","betaComparison":0.8,"relationalOperator":"_GT"} }
+        <br>{"criteriaBucket":{"type":"MARKET_CAP","marketCapComparison":1000000000,"relationalOperator":"_GE"} }
+
+        <h4 class="text text-primary">Other</h4>
+        {"criteriaBucket":{"type":"EARNINGS_ANNOUNCEMENT","daysAway":10,"relationalOperator":"_LE"} }
+
+    </div>
 </div>
