@@ -29,7 +29,8 @@ export class OspreyRepository {
         winston.info("Fetching latest hot shit for today ... ");
 
         let query = {
-            text: 'select array_to_json(array_agg(payload)) as payload from tha_hot_shit where deleted = FALSE and date = (select max(date) from tha_hot_shit);',
+            text: `select array_to_json(array_agg(payload)) as payload from tha_hot_shit where deleted = FALSE and 
+            ( date = (select max(date) from tha_hot_shit) or date = '19700101' );`,
             params: []
         };
         return this.execute(query, rh);
@@ -53,6 +54,16 @@ export class OspreyRepository {
             set deleted = TRUE, timestamp = clock_timestamp()
             where symbol = $1 and date = $2`,
             params: [symbol, date]
+        };
+        return this.execute(query, rh);
+    }
+
+    public persistHotListItem(hotListItem:any, rh: PostgresResultHandler) {
+        winston.debug("Inserting into hotlist for symbol " + hotListItem.key.symbol);
+
+        let query = {
+            text: `insert into tha_hot_shit values ($1, '19700101', clock_timestamp(), $2, FALSE)`,
+            params: [hotListItem.key.symbol, JSON.stringify(hotListItem)]
         };
         return this.execute(query, rh);
     }

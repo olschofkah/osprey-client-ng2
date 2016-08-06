@@ -132,6 +132,7 @@ import { persistModelScreens,
   persistSecurityComment,
   deleteSecurityComment,
   deleteHotListForSymbolAndDate,
+  insertHotListItem,
   getHotListForDate,
   ensureAuthenticated
 } from './backend/api.helper';
@@ -166,6 +167,7 @@ app.get('/api/security-comments/:symbol', ensureAuthenticated, getSecurityCommen
 app.get('/api/hot-list/:date', ensureAuthenticated, getHotListForDate);
 
 app.post('/api/security-comments', ensureAuthenticated, persistSecurityComment);
+app.post('/api/hot-list', ensureAuthenticated, insertHotListItem);
 
 app.put('/api/black-list', ensureAuthenticated, persistBlackList);
 app.put('/api/model-screens', ensureAuthenticated, persistModelScreens);

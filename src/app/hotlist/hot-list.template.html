@@ -24,9 +24,13 @@
         </div>
         <div class="col-md-8">
             <div class="row">
-                <div class="col-md-10">
-                    <input type="date" max="{{maxDate}}" [(ngModel)]="loadDate"/>
+                <div class="col-md-4">
+                    <input type="date" max="{{maxDate}}" [(ngModel)]="loadDate" (keyup.enter)="loadHistorical()"/>
                     <button class="btn" (click)="loadHistorical()">Load list for date</button>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" maxlength="10" [(ngModel)]="newSymbol" (keyup.enter)="addSymbol()" placeholder="symbol"/>
+                    <button class="btn" (click)="addSymbol()">Add</button>
                 </div>
                 <div class="col-md-2" *ngIf="selectedItem">
                     <button class="btn btn-warning text text-right" (click)="deleteSelectedItem()">Ignore {{selectedItem.key.symbol}}</button>

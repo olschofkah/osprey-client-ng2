@@ -68,6 +68,12 @@ export function persistModelScreens(req: Request, res: Response) {
   _db.persistModelScreens(JSON.stringify(req.body), responseHandler);
 }
 
+export function insertHotListItem(req: Request, res: Response) {
+  let responseHandler = new DefaultResponseHandler(res);
+  _db.persistHotListItem(req.body, responseHandler);
+}
+
+
 export function ensureAuthenticated(req: Request, res: Response, next): any {
 
   winston.debug("Authorizing request for " + req.path + " ... Request Auth Status: " + req.isAuthenticated() + " sessionID:" + req.sessionID);

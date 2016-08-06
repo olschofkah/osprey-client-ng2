@@ -57,6 +57,14 @@ export class OspreyApiService {
             .toPromise();
     }
 
+    insertHotListItem(item: HotListItem): Promise<any> {
+        this.log.info(this.hotListUrl);
+
+        return this.http
+            .post(this.hotListUrl, item, { headers: this.generateHeadersForPutOrPost() })
+            .toPromise();
+    }
+
     getBlackList(): Observable<any> {
         this.log.info(this.blackListUrl);
 

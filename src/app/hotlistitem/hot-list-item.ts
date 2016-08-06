@@ -10,7 +10,8 @@ export class HotListItem {
     public strategies: string[],
     public groupedScreen: string,
     public selected: boolean,
-    public deleted: boolean) {
+    public deleted: boolean,
+    public reportDate: Date) {
 
   }
 

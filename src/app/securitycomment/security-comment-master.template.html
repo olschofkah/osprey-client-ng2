@@ -12,7 +12,7 @@
             </div>
             <div class="row">
                 <div class="col-md-2"><input [(ngModel)]="newSymbol" placeholder="symbol" /></div>
-                <div class="col-md-9"><textarea [(ngModel)]="newComment" placeholder="notes ... " class="form-control" style="width:100%"></textarea></div>
+                <div class="col-md-9"><textarea [(ngModel)]="newComment" (keyup.enter)="add()" placeholder="notes ... " class="form-control" style="width:100%"></textarea></div>
                 <div class="col-md-1"><button class="btn btn-success btn-sm" (click)="add()">Add</button></div>
             </div>
         </ul>

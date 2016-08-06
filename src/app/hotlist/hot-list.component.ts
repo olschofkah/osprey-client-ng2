@@ -28,6 +28,9 @@ export class HotList {
   private maxDate: Date = new Date();
   private loadDate: Date = this.maxDate;
 
+  public MANUAL_MODEL_NAME: string = 'Manual Watch';
+  private newSymbol: string;
+
   hotListItemsArray: any[] = [];
   hotListItems: { [id: string]: HotListItem[] } = {};
   selectedItem: HotListItem;
@@ -92,6 +95,36 @@ export class HotList {
         }
       }
     }
+  }
+
+  addSymbol() {
+    let key: any = { symbol: this.newSymbol, cusip: '' };
+
+    let newItem: HotListItem = new HotListItem(
+      key,
+      [this.MANUAL_MODEL_NAME],
+      [],
+      this.MANUAL_MODEL_NAME,
+      false,
+      false,
+      new Date(1970, 0, 1)
+    );
+
+    if (!this.hotListItems[this.MANUAL_MODEL_NAME]) {
+      this.hotListItems[this.MANUAL_MODEL_NAME] = [];
+      this.hotListItemsArray.unshift(this.hotListItems[this.MANUAL_MODEL_NAME]);
+    }
+
+    this.hotListItems[this.MANUAL_MODEL_NAME].push(newItem);
+    this.apiService.insertHotListItem(newItem)
+      .then((response) => {
+        this.clientAlertService.alertMsg('Hot List Item Saved ... ');
+      })
+      .catch((err) => {
+        this.clientAlertService.alertError('An error occured saving the hot list ' + err);
+      });
+
+    this.newSymbol = null;
   }
 
   deleteSelectedItem() {
