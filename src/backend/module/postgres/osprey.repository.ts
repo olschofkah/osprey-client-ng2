@@ -177,6 +177,7 @@ export class OspreyRepository {
                         f.trailing_pe as trailingpe,
                         f.forward_pe as forwardpe,
                         f.div_yield as divyield,
+                        f.volatility,
                         n.next_ex_div_date as nextexdate,
                         n.next_earnings_date_est_low earningslowdate,
                         n.next_earnings_date_est_high earningshighdate

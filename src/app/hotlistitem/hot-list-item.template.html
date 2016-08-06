@@ -38,7 +38,7 @@
                 <div *ngIf="summaryDetail?.forwardpe" class="col-md-3 text"><label>Fwd PE</label>: {{summaryDetail?.forwardpe | number:'1.3'}}</div>
                 <div *ngIf="!summaryDetail?.divyield" class="col-md-3 text"></div>
                 <div *ngIf="summaryDetail?.divyield" class="col-md-3 text"><label>Div Yield</label>: {{summaryDetail?.divyield | percent:'1.3' }}</div>
-                <div class="col-md-3 text"></div>
+                <div class="col-md-3 text"><label>Volatility</label>: {{summaryDetail?.volatility | number:'1.3' }}</div>
             </div>
         </div>
 
