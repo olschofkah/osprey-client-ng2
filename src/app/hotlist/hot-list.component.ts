@@ -52,7 +52,7 @@ export class HotList {
       data => {
         if (data != null) {
           this.loadData(data);
-          console.log(data);
+          
           // Find the date of the load
           for (let i = 0; i < data.length; ++i) {
             if (data[i].namedScreenSets[0] !== this.MANUAL_MODEL_NAME) {
