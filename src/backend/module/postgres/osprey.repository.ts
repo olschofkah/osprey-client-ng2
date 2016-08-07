@@ -58,7 +58,7 @@ export class OspreyRepository {
         return this.execute(query, rh);
     }
 
-    public persistHotListItem(hotListItem:any, rh: PostgresResultHandler) {
+    public persistHotListItem(hotListItem: any, rh: PostgresResultHandler) {
         winston.debug("Inserting into hotlist for symbol " + hotListItem.key.symbol);
 
         let query = {
@@ -125,8 +125,7 @@ export class OspreyRepository {
 
         let query = {
             text: `select array_to_json(array_agg(d)) as payload from
-             (select symbol, timestamp, comment from oc_security_comment where deleted = FALSE and symbol = $1) d;
-            `,
+             (select symbol, timestamp, comment from oc_security_comment where deleted = FALSE and symbol = $1 order by timestamp desc) d;`,
             params: [symbol]
         };
         return this.execute(query, rh);
@@ -178,6 +177,10 @@ export class OspreyRepository {
                         f.forward_pe as forwardpe,
                         f.div_yield as divyield,
                         f.volatility,
+                        f._8_day_ema as _8dayema,
+                        f._15_day_ema as _15dayema,
+                        f._50_day_ema as _50dayema,
+                        f._200_day_ema as _200dayema,
                         n.next_ex_div_date as nextexdate,
                         n.next_earnings_date_est_low earningslowdate,
                         n.next_earnings_date_est_high earningshighdate

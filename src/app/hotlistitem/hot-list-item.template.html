@@ -44,6 +44,23 @@
 
         <div class="row">
             <div class="row-border">
+                <div *ngIf="!summaryDetail?._8dayema" class="col-md-3 text"></div>
+                <div *ngIf="summaryDetail?._8dayema" [ngClass]="{'text-danger': summaryDetail?._8dayema < summaryDetail?.last, 'text-success': summaryDetail?._8dayema > summaryDetail?.last}"
+                    class="col-md-3 text"><label>8 Day EMA</label>: {{summaryDetail?._8dayema | currency:'USD':true:'1.2-2' }}</div>
+                <div *ngIf="!summaryDetail?._15dayema" class="col-md-3 text"></div>
+                <div *ngIf="summaryDetail?._15dayema" [ngClass]="{'text-danger': summaryDetail?._15dayema < summaryDetail?.last, 'text-success': summaryDetail?._15dayema > summaryDetail?.last}"
+                    class="col-md-3 text"><label>15 Day EMA</label>: {{summaryDetail?._15dayema | currency:'USD':true:'1.2-2' }}</div>
+                <div *ngIf="!summaryDetail?._50dayema" class="col-md-3 text"></div>
+                <div *ngIf="summaryDetail?._50dayema" [ngClass]="{'text-danger': summaryDetail?._50dayema < summaryDetail?.last, 'text-success': summaryDetail?._50dayema > summaryDetail?.last}"
+                    class="col-md-3 text"><label>50 Day EMA</label>: {{summaryDetail?._50dayema | currency:'USD':true:'1.2-2' }}</div>
+                <div *ngIf="!summaryDetail?._200dayema" class="col-md-3 text"></div>
+                <div *ngIf="summaryDetail?._200dayema" [ngClass]="{'text-danger': summaryDetail?._200dayema < summaryDetail?.last, 'text-success': summaryDetail?._200dayema > summaryDetail?.last}"
+                    class="col-md-3 text"><label>200 Day EMA</label>: {{summaryDetail?._200dayema | currency:'USD':true:'1.2-2' }}</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="row-border">
                 <div *ngIf="!summaryDetail?.nextexdate" class="col-md-3 text"></div>
                 <div *ngIf="summaryDetail?.nextexdate" class="col-md-3 text"><label>Next Ex Date</label>: {{summaryDetail?.nextexdate }}</div>
                 <div *ngIf="!summaryDetail?.earningshighdate && !summaryDetail?.earningslowdate" class="col-md-3 text"></div>

@@ -70,7 +70,9 @@ export class HotList {
     this.apiService.getHotListForDate(this.loadDate)
       .subscribe(
       data => {
-        this.loadData(data);
+        if (data != null) {
+          this.loadData(data);
+        }
       },
       err => {
         this.clientAlertService.alertError('An error occured fetching the historical hot list. ' + err);

@@ -35,7 +35,6 @@ export class HotListItemComponent {
     this.apiService.getStockSummaryDetail(symbol)
       .subscribe(
       data => {
-        console.log(data);
         if (data != null && data[0] != null) {
           this.summaryDetail = data[0];
           this.summaryDetail.companyname = this.summaryDetail.companyname.replace('&apos;', '\'').replace('&amp;', '&');
