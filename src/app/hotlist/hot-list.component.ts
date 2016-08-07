@@ -25,8 +25,8 @@ export class HotList {
   constructor(private apiService: OspreyApiService, private log: Logger, private clientAlertService: ClientAlertService) {
   }
 
-  private maxDate: Date = new Date();
-  private loadDate: Date = this.maxDate;
+  private maxDate: string = new Date().toISOString().substr(0, 10);
+  private loadDate: string = this.maxDate;
 
   public MANUAL_MODEL_NAME: string = 'Manual Watch';
   private newSymbol: string;
@@ -50,9 +50,17 @@ export class HotList {
     this.apiService.getHotList()
       .subscribe(
       data => {
-        this.loadData(data);
-
-        // TODO find the current date for the data to set into the date picker
+        if (data != null) {
+          this.loadData(data);
+          console.log(data);
+          // Find the date of the load
+          for (let i = 0; i < data.length; ++i) {
+            if (data[i].namedScreenSets[0] !== this.MANUAL_MODEL_NAME) {
+              this.loadDate = new Date(data[i].reportDate).toISOString().substr(0, 10);
+              break;
+            }
+          }
+        }
       },
       err => {
         this.clientAlertService.alertError('An error occured fetching the hot list. ' + err);
