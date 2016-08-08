@@ -41,7 +41,7 @@ export class OspreyApiService {
             .map(res => res.json());
     }
 
-    getHotListForDate(date: Date): Observable<any> {
+    getHotListForDate(date: string): Observable<any> {
         let url: string = this.hotListUrl + "/" + date;
         this.log.info(url);
 

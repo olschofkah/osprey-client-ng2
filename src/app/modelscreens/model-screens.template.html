@@ -20,6 +20,8 @@
         <h4 class="text text-primary">Specific</h4>
         {"criteriaBucket":{"type":"INSTRUMENT_TYPE","instrumentTypes":["ETF","ETN"], "contains":true} }
         <br>{"criteriaBucket":{"type":"SYMBOL","symbols":["QQQ","SPY"],"contains":true} }
+        <br>{"criteriaBucket":{"type":"INDUSTRY","symbols":["Biotech","Grocery"],"contains":false} } <span class = "text text-info"><label>Note:</label> Industry screen supports fuzy matching.</span>
+        <br>{"criteriaBucket":{"type":"SECTOR","symbols":["Healthcare","Technology"],"contains":true} }
 
         <h4 class="text text-primary">Moving Averages</h4>
         {"criteriaBucket":{"type":"EMA","period1":10,"period2":50,"relationalOperator":"_GT"} }
