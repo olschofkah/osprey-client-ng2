@@ -52,7 +52,7 @@ export class HotList {
       data => {
         if (data != null) {
           this.loadData(data);
-          
+
           // Find the date of the load
           for (let i = 0; i < data.length; ++i) {
             if (data[i].namedScreenSets[0] !== this.MANUAL_MODEL_NAME) {
@@ -102,6 +102,18 @@ export class HotList {
           }
           data[i].groupedScreen = screen;
           this.hotListItems[screen].push(data[i]);
+        }
+      }
+    }
+
+    // bubble sort list
+    for (let m: number = this.hotListItemsArray.length; m > 0; --m) {
+      for (let n: number = 0; n < m - 1; ++n) {
+        if (this.hotListItemsArray[n][0].groupedScreen.localeCompare(this.hotListItemsArray[n + 1][0].groupedScreen) > 0
+          && this.hotListItemsArray[n][0].groupedScreen !== this.MANUAL_MODEL_NAME) {
+          let tmp: any = this.hotListItemsArray[n + 1];
+          this.hotListItemsArray[n + 1] = this.hotListItemsArray[n];
+          this.hotListItemsArray[n] = tmp;
         }
       }
     }
