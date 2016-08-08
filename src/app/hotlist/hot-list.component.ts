@@ -106,7 +106,7 @@ export class HotList {
       }
     }
 
-    // bubble sort list
+    // bubble sort group list
     for (let m: number = this.hotListItemsArray.length; m > 0; --m) {
       for (let n: number = 0; n < m - 1; ++n) {
         if (this.hotListItemsArray[n][0].groupedScreen.localeCompare(this.hotListItemsArray[n + 1][0].groupedScreen) > 0
@@ -114,6 +114,21 @@ export class HotList {
           let tmp: any = this.hotListItemsArray[n + 1];
           this.hotListItemsArray[n + 1] = this.hotListItemsArray[n];
           this.hotListItemsArray[n] = tmp;
+        }
+      }
+    }
+
+    // bubble sort symbol lists
+    let group: any;
+    for (let p: number = 0; p < this.hotListItemsArray.length; ++p) {
+      group = this.hotListItemsArray[p]
+      for (let m: number = group.length; m > 0; --m) {
+        for (let n: number = 0; n < m - 1; ++n) {
+          if (group[n].key.symbol.localeCompare(group[n + 1].key.symbol) > 0) {
+            let tmp: any = group[n + 1];
+            group[n + 1] = group[n];
+            group[n] = tmp;
+          }
         }
       }
     }
