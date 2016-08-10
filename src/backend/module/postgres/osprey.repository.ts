@@ -177,6 +177,7 @@ export class OspreyRepository {
                         f.forward_pe as forwardpe,
                         f.div_yield as divyield,
                         f.volatility,
+                        f.rotation_indicator as rotationindicator,
                         f._8_day_ema as _8dayema,
                         f._15_day_ema as _15dayema,
                         f._50_day_ema as _50dayema,

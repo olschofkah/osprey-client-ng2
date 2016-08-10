@@ -4,7 +4,7 @@
         "GOOGLE_CLIENT_SECRET": "WvJZDUUAN61wBgYdmpTI0pMp"
     },
     "serverLogFile": "./client-server.log",
-    "domain": "http://ec2-52-23-202-211.compute-1.amazonaws.com:3000",
+    "domain": "http://ec2-54-172-242-166.compute-1.amazonaws.com:3000",
     "allowedUserIds": [
         "116305702049189009249",
         "116796067724549231787",
