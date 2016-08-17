@@ -1,10 +1,12 @@
 
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 import { HotListItem } from '../hotlistitem/hot-list-item';
 import { HotListItemComponent } from '../hotlistitem/hot-list-item.component';
 import { SecurityCommentSymbol } from '../securitycomment/symbol/security-comment-symbol.component';
+import { StockChart } from '../stockchart/stock-chart.component'
+
 import { OspreyApiService } from '../service/osprey-api.service';
 import { ClientAlertService } from '../service/client-alert.service';
 import { Logger } from '../service/logger.service';
@@ -14,7 +16,7 @@ import {Observable} from 'rxjs/Observable';
 @Component({
   moduleId: __filename,
   selector: 'hotlist',
-  directives: [NgFor, HotListItemComponent, SecurityCommentSymbol],
+  directives: [NgFor, NgIf, HotListItemComponent, SecurityCommentSymbol, StockChart],
   template: require('./hot-list.template.html'),
   styles: [require('../../assets/bootstrap.min.css'), require('../../assets/osprey.css')],
   providers: [OspreyApiService, Logger]
@@ -26,7 +28,7 @@ export class HotList {
   }
 
   private maxDate: string = new Date().toISOString().substr(0, 10);
-  private loadDate: string = this.maxDate;
+  loadDate: string = this.maxDate;
 
   public MANUAL_MODEL_NAME: string = 'Manual Watch';
   private newSymbol: string;

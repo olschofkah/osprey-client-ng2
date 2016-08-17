@@ -134,7 +134,8 @@ import { persistModelScreens,
   deleteHotListForSymbolAndDate,
   insertHotListItem,
   getHotListForDate,
-  ensureAuthenticated
+  ensureAuthenticated, 
+  getChartDataForSymbol
 } from './backend/api.helper';
 
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
@@ -164,6 +165,7 @@ app.get('/api/black-list', ensureAuthenticated, getBlackList);
 app.get('/api/model-screens', ensureAuthenticated, getModelScreens);
 app.get('/api/security-comments', ensureAuthenticated, getSecurityComments);
 app.get('/api/security-comments/:symbol', ensureAuthenticated, getSecurityCommentsForSymbol);
+app.get('/api/chart-data/:symbol', ensureAuthenticated, getChartDataForSymbol);
 app.get('/api/hot-list/:date', ensureAuthenticated, getHotListForDate);
 
 app.post('/api/security-comments', ensureAuthenticated, persistSecurityComment);

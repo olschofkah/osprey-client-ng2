@@ -50,7 +50,8 @@
     "morgan": "1.7.0",
     "passport": "0.3.2",
     "passport-google-oauth": "1.0.0",
-    "randomstring": "1.1.5"
+    "randomstring": "1.1.5",
+    "angular2-highcharts" : "0.1.1"
   },
   "devDependencies": {
     "angular2-template-loader": "^0.4.0",

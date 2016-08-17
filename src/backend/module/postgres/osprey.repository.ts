@@ -131,6 +131,28 @@ export class OspreyRepository {
         return this.execute(query, rh);
     }
 
+    public findChartDataForSymbol(symbol: string, rh: PostgresResultHandler): void {
+        winston.debug("Finding chart data for " + symbol);
+
+        let query = {
+            text: `select array_to_json(array_agg(d)) as payload from (
+                        select 	ohlc.symbol, 
+                        ohlc.date,
+                        ohlc.open,
+                        ohlc.high,
+                        ohlc.low,
+                        ohlc.close,
+                        ohlc.adj_close as adjclose,
+                        ohlc.volume
+                        from oc_security_ohlc_hist ohlc
+                        where symbol = $1
+                        order by date asc
+                    ) d;`,
+            params: [symbol]
+        };
+        return this.execute(query, rh);
+    }
+
     public persistSecurityComment(symbol: string, comment: string, rh: PostgresResultHandler) {
         winston.debug("Inserting security comments for " + symbol);
 

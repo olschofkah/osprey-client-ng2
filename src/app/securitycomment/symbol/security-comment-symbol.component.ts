@@ -28,7 +28,6 @@ export class SecurityCommentSymbol {
   }
 
   @Input() set target(symbol: string) {
-    console.log(symbol);
     if (symbol) {
       this.symbol = symbol;
       this.comments.splice(0, this.comments.length);

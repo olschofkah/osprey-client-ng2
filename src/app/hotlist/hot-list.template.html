@@ -1,9 +1,6 @@
-<div class="page-header">
-    <h1>{{title}}</h1>
-</div>
 <div class="container-fluid fill">
     <div class="row">
-        <div class="col-md-4 well well-lg fixed-panel">
+        <div class="col-md-4 well well-lg">
             <ul class="list-unstyled">
                 <li *ngFor="let hotItemScreenSet of hotListItemsArray">
                     <br>
@@ -25,11 +22,11 @@
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-4">
-                    <input type="date" max="{{maxDate}}" [(ngModel)]="loadDate" (keyup.enter)="loadHistorical()"/>
+                    <input type="date" max="{{maxDate}}" [(ngModel)]="loadDate" (keyup.enter)="loadHistorical()" />
                     <button class="btn" (click)="loadHistorical()">Load list for date</button>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" maxlength="10" [(ngModel)]="newSymbol" (keyup.enter)="addSymbol()" placeholder="symbol"/>
+                    <input type="text" maxlength="10" [(ngModel)]="newSymbol" (keyup.enter)="addSymbol()" placeholder="symbol" />
                     <button class="btn" (click)="addSymbol()">Add</button>
                 </div>
                 <div class="col-md-2" *ngIf="selectedItem">
@@ -37,6 +34,7 @@
                 </div>
             </div>
             <hot-list-item [target]="selectedItem"></hot-list-item>
+            <stock-chart *ngIf='selectedItem' [target]="selectedItem"></stock-chart>
             <security-comment-symbol [target]="selectedItem?.key?.symbol"></security-comment-symbol>
         </div>
     </div>

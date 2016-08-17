@@ -8,8 +8,8 @@ html, body {
 }
 
 .fixed-panel {
-  min-height: 640px !important;
-  max-height: 640px !important;
+  min-height: 1080px !important;
+  max-height: 1080px !important;
   overflow-y: scroll;
 }
 

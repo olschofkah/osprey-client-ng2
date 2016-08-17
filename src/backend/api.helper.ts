@@ -73,6 +73,12 @@ export function insertHotListItem(req: Request, res: Response) {
   _db.persistHotListItem(req.body, responseHandler);
 }
 
+export function getChartDataForSymbol(req: Request, res: Response) {
+  let responseHandler = new DefaultResponseHandler(res);
+  _db.findChartDataForSymbol(req.params.symbol, responseHandler);
+
+}
+
 
 export function ensureAuthenticated(req: Request, res: Response, next): any {
 

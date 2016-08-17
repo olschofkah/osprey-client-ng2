@@ -19,6 +19,7 @@ export class OspreyApiService {
     private blackListUrl: string;
     private modelScreensUrl: string;
     private securityCommentsUrl: string;
+    private chartDataUrl: string;
 
     constructor(private http: Http, private log: Logger, private _config: Config) {
 
@@ -29,6 +30,7 @@ export class OspreyApiService {
         this.modelScreensUrl = this.domain + '/api/model-screens';
         this.detailSummaryUrl = this.domain + '/api/detail-summary';
         this.securityCommentsUrl = this.domain + '/api/security-comments';
+        this.chartDataUrl = this.domain + '/api/chart-data';
 
         this.logoutUrl = this.domain + '/auth/logout';
 
@@ -129,6 +131,14 @@ export class OspreyApiService {
         this.log.info(this.securityCommentsUrl);
 
         return this.http.get(this.securityCommentsUrl)
+            .map(res => res.json());
+    }
+
+    getChartData(symbol:string): Observable<any> {
+        let url: string = this.chartDataUrl + "/" + symbol;
+        this.log.info(url);
+
+        return this.http.get(url)
             .map(res => res.json());
     }
 
