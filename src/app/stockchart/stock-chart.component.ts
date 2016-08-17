@@ -52,31 +52,50 @@ export class StockChart {
 
 
 
-                    let series: HighchartsIndividualSeriesOptions[] = [
-                        {
-                            type: 'candlestick',
-                            name: 'candlestick',
-                            id: 'dataseries',
-                            data: ohlcData
-                        }, {
-                            type: 'flags',
-                            name: 'Flags on series',
-                            data: [
-                                {
-                                    x: new Date(item.reportDate).getTime(),
-                                    title: 'Load Date'
-                                }
-                            ],
-                            onSeries: 'dataseries',
-                            y:30,
-                            shape: 'squarepin',
-                        }, {
-                            type: 'column',
-                            name: 'Volume',
-                            data: volumeData,
-                            yAxis: 1
-                        }
-                    ]
+                    let series: HighchartsIndividualSeriesOptions[] = []
+
+                    // manual watch lists load for epoch time ... don't show the load date flag for these. 
+                    if (new Date(item.reportDate) < new Date(1971, 0, 0)) {
+                        series = [
+                            {
+                                type: 'candlestick',
+                                name: 'candlestick',
+                                id: 'dataseries',
+                                data: ohlcData
+                            }, {
+                                type: 'column',
+                                name: 'Volume',
+                                data: volumeData,
+                                yAxis: 1
+                            }
+                        ]
+                    } else {
+                        series = [
+                            {
+                                type: 'candlestick',
+                                name: 'candlestick',
+                                id: 'dataseries',
+                                data: ohlcData
+                            }, {
+                                type: 'flags',
+                                name: 'Load Date Flag',
+                                data: [
+                                    {
+                                        x: new Date(item.reportDate).getTime(),
+                                        title: 'Load Date'
+                                    }
+                                ],
+                                onSeries: 'dataseries',
+                                y: 30,
+                                shape: 'squarepin',
+                            }, {
+                                type: 'column',
+                                name: 'Volume',
+                                data: volumeData,
+                                yAxis: 1
+                            }
+                        ]
+                    }
 
 
                     this.options = {
