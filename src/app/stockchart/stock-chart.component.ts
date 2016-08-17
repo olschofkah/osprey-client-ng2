@@ -86,7 +86,7 @@ export class StockChart {
                                     }
                                 ],
                                 onSeries: 'dataseries',
-                                y: 30,
+                                y: 50,
                                 shape: 'squarepin',
                             }, {
                                 type: 'column',
@@ -100,7 +100,11 @@ export class StockChart {
 
                     this.options = {
 
-                        colors: ['#db4c3c', '#333333'],
+                        colors: ['#db4c3c', '#333333', '#333333'],
+
+                        rangeSelector: {
+                            selected: 1
+                        },
 
                         yAxis: [
                             {
