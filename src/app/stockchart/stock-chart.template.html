@@ -1,3 +1,11 @@
 <div class="container-fluid fill">
+    <span><label>Type:</label> <select name="charttype" (change)="doLoad()" [(ngModel)]="chartType" >
+<option  value="candlestick">Candle Stick</option>
+<option  value="ohlc">OHLC</option>
+<option  value="line">Line</option>
+<option  value="spline">Spline</option>
+<option  value="area">Area</option>
+<option  value="areaspline">Area Spline</option>
+</select></span>
     <chart style="width:60%; height:60%" type="StockChart" [options]="options"> </chart>
 </div>

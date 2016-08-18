@@ -20,22 +20,25 @@ import { Observable } from 'rxjs/Observable';
 export class StockChart {
 
     private options: HighchartsOptions;
+    private chartType: string = 'candlestick';
+    private item: HotListItem;
 
     constructor(private apiService: OspreyApiService, private log: Logger, private clientAlertService: ClientAlertService) {
 
     }
     @Input() set target(inputItem: HotListItem) {
-        this.doLoad(inputItem);
+        this.item = inputItem;
+        this.doLoad();
     }
 
-    private doLoad(item: HotListItem) {
+    private doLoad() {
 
-        this.apiService.getChartData(item.key.symbol)
+        this.apiService.getChartData(this.item.key.symbol)
             .subscribe(
             data => {
                 if (data != null) {
 
-                    let ohlcData = [];
+                    let primarySeriesData = [];
                     let volumeData = [];
                     let xCrossHairData = [];
                     let yCrossHairData = [];
@@ -45,7 +48,12 @@ export class StockChart {
                     for (let i = 0; i < data.payload.length; ++i) {
                         currentData = data.payload[i];
 
-                        ohlcData.push([new Date(currentData.date).getTime(), currentData.open, currentData.high, currentData.low, currentData.close]);
+                        if (this.chartType === 'candlestick' || this.chartType == 'ohlc') {
+                            primarySeriesData.push([new Date(currentData.date).getTime(), currentData.open, currentData.high, currentData.low, currentData.close]);
+                        } else {
+                            primarySeriesData.push([new Date(currentData.date).getTime(), currentData.adjclose]);
+                        }
+
                         volumeData.push([new Date(currentData.date).getTime(), currentData.volume]);
 
                     }
@@ -55,13 +63,13 @@ export class StockChart {
                     let series: HighchartsIndividualSeriesOptions[] = []
 
                     // manual watch lists load for epoch time ... don't show the load date flag for these. 
-                    if (new Date(item.reportDate) < new Date(1971, 0, 0)) {
+                    if (new Date(this.item.reportDate) < new Date(1971, 0, 0)) {
                         series = [
                             {
-                                type: 'candlestick',
-                                name: 'candlestick',
+                                type: this.chartType,
+                                name: 'Primary',
                                 id: 'dataseries',
-                                data: ohlcData
+                                data: primarySeriesData
                             }, {
                                 type: 'column',
                                 name: 'Volume',
@@ -72,16 +80,16 @@ export class StockChart {
                     } else {
                         series = [
                             {
-                                type: 'candlestick',
-                                name: 'candlestick',
+                                type: this.chartType,
+                                name: 'Primary',
                                 id: 'dataseries',
-                                data: ohlcData
+                                data: primarySeriesData
                             }, {
                                 type: 'flags',
                                 name: 'Load Date Flag',
                                 data: [
                                     {
-                                        x: new Date(item.reportDate).getTime(),
+                                        x: new Date(this.item.reportDate).getTime(),
                                         title: 'Load Date'
                                     }
                                 ],
@@ -103,7 +111,7 @@ export class StockChart {
                         colors: ['#db4c3c', '#333333', '#333333'],
 
                         rangeSelector: {
-                            selected: 1
+                            selected: 4
                         },
 
                         yAxis: [
