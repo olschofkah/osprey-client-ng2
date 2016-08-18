@@ -125,7 +125,7 @@ export class OspreyRepository {
 
         let query = {
             text: `select array_to_json(array_agg(d)) as payload from
-             (select symbol, timestamp, comment from oc_security_comment where deleted = FALSE and symbol = $1 order by timestamp desc) d;`,
+             (select id, symbol, timestamp, comment from oc_security_comment where deleted = FALSE and symbol = $1 order by timestamp desc) d;`,
             params: [symbol]
         };
         return this.execute(query, rh);

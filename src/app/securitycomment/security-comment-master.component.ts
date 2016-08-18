@@ -49,7 +49,7 @@ export class SecurityCommentMaster {
       comment.symbol = this.newSymbol.toUpperCase();
       comment.comment = this.newComment;
 
-      this.comments[this.comments.length] = comment;
+      this.comments.unshift(comment);
       this.newSymbol = "";
       this.newComment = "";
       this.persist(comment);
@@ -79,10 +79,10 @@ export class SecurityCommentMaster {
   deleteComment(comment: SecurityComment) {
     this.apiService.deleteSecurityComment(comment)
       .then((response) => {
-        this.clientAlertService.alertMsg('Security Comment Saved ... ');
+        this.clientAlertService.alertMsg('Security Comment Deleted ... ');
       })
       .catch((err) => {
-        this.clientAlertService.alertError('Security Comment Failed to save due to ' + err);
+        this.clientAlertService.alertError('Security Comment Failed to delete due to ' + err);
       });
   }
 
