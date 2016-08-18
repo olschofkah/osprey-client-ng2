@@ -56,7 +56,9 @@
         <br>{"criteriaBucket":{"type":"MARKET_CAP","marketCapComparison":1000000000,"relationalOperator":"_GE"} }
 
         <h4 class="text text-primary">Other</h4>
-        {"criteriaBucket":{"type":"EARNINGS_ANNOUNCEMENT","daysAway":10,"relationalOperator":"_LE"} }
+        {"criteriaBucket":{"type":"EARNINGS_ANNOUNCEMENT","daysAway":10,"relationalOperator":"_LE"} } <span class = "text text-info"><label>Note:</label> Days are measured in periods for this screen</span>
+        <br>{"criteriaBucket":{"type":"EARNINGS_PCT_MOVE","daysBefore":14,"daysAfter":4,"percentMoveComparison":0.06,"relationalOperator":"_GE"} } <span class = "text text-info"><label>Note:</label> Days are measured in calendar days for this screen</span>
+        <br>{"criteriaBucket":{"type":"EARNINGS_VOLATILITY","daysBefore":14,"daysAfter":4,"volatilityComparison":0.07,"relationalOperator":"_GE"} } <span class = "text text-info"><label>Note:</label> Days are measured in calendar days for this screen</span>
         <br>{"criteriaBucket":{"type":"ROTATION_INDICATOR","longPeriod":60,"shortPeriod":20,"lag":1,"rotationBenchmark":0,"relationalOperator":"_GT"} }
 
     </div>
