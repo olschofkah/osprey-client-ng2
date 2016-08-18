@@ -7,7 +7,8 @@
             <div class="row" *ngFor="let item of comments">
                 <div class="col-md-1 text">{{item.symbol}}</div>
                 <div class="col-md-2">{{item.timestamp | date:'medium'}}</div>
-                <div class="col-md-8 text">{{item.comment}}</div>
+                <div class="col-md-1 text">{{item.username}}</div>
+                <div class="col-md-6 text">{{item.comment}}</div>
                 <div class="col-md-1"><button class="btn btn-warning btn-sm" (click)="remove(item)">Remove</button></div>
             </div>
             <div class="row">

@@ -113,7 +113,7 @@ export class OspreyRepository {
 
         let query = {
             text: `select array_to_json(array_agg(d)) as payload from
-             (select id, symbol, timestamp, comment from oc_security_comment where deleted = FALSE order by timestamp desc) d;
+             (select id, symbol, timestamp, comment, user_id as userid from oc_security_comment where deleted = FALSE order by timestamp desc) d;
             `,
             params: []
         };
@@ -125,7 +125,7 @@ export class OspreyRepository {
 
         let query = {
             text: `select array_to_json(array_agg(d)) as payload from
-             (select id, symbol, timestamp, comment from oc_security_comment where deleted = FALSE and symbol = $1 order by timestamp desc) d;`,
+             (select id, symbol, timestamp, comment, user_id as userid from oc_security_comment where deleted = FALSE and symbol = $1 order by timestamp desc) d;`,
             params: [symbol]
         };
         return this.execute(query, rh);
@@ -153,12 +153,12 @@ export class OspreyRepository {
         return this.execute(query, rh);
     }
 
-    public persistSecurityComment(symbol: string, comment: string, rh: PostgresResultHandler) {
-        winston.debug("Inserting security comments for " + symbol);
+    public persistSecurityComment(symbol: string, comment: string, userId: any, rh: PostgresResultHandler) {
+        winston.debug("Inserting security comments for " + symbol + " for user " + userId);
 
         let query = {
-            text: `insert into oc_security_comment (symbol, timestamp, comment) values ($1, clock_timestamp(), $2) `,
-            params: [symbol, comment]
+            text: `insert into oc_security_comment (symbol, timestamp, comment, user_id) values ($1, clock_timestamp(), $2, $3) `,
+            params: [symbol, comment, userId]
         };
         return this.execute(query, rh);
     }

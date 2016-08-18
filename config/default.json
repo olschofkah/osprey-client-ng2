@@ -10,6 +10,13 @@
         "116796067724549231787",
         "102426699128335316977"
     ],
+    "userAliasMap": {
+        "116305702049189009249": "goliaeth"
+    },
+    "slack": {
+        "host": "hooks.slack.com",
+        "liveTradeIdeasWebHookPath": "/services/T1G1PJWSK/B22N4BT0D/3h7gmXHKGIvzkDAGYSzYS3UR"
+    },
     "pg": {
         "conString": "postgresql://ospreynodeusr:@7wTASPfJ&gh@ospreydb.cl1fkmenjbzm.us-east-1.rds.amazonaws.com:5432/osprey01",
         "config": {

@@ -1,12 +1,17 @@
 
 import { ExpressRouteResponseResultHandler } from './module/responsehandler/express-route-response-result-handler';
 import { DefaultResponseHandler } from './module/responsehandler/default-response-handler';
+import { SecurityCommentResultHandler } from './module/responsehandler/security-comment-result-handler'
 import { OspreyRepository } from './module/postgres/osprey.repository';
 import { Request, Response} from 'express';
 import * as winston from 'winston';
 import * as config from 'config';
+import { SlackClient } from './module/slack/slack-client';
+import { UserAliasUtils } from './module/user-alias-utils'
 
 export const _db: OspreyRepository = new OspreyRepository();
+export const _slack: SlackClient = new SlackClient();
+export const _alias: UserAliasUtils = new UserAliasUtils();
 
 export function getHotList(req: Request, res: Response) {
   let responseHandler = new ExpressRouteResponseResultHandler(res);
@@ -29,18 +34,23 @@ export function persistBlackList(req: Request, res: Response) {
 }
 
 export function getSecurityComments(req: Request, res: Response) {
-  let responseHandler = new ExpressRouteResponseResultHandler(res);
+  let responseHandler = new SecurityCommentResultHandler(res);
   _db.findSecurityComments(responseHandler);
 }
 
 export function getSecurityCommentsForSymbol(req: Request, res: Response) {
-  let responseHandler = new ExpressRouteResponseResultHandler(res);
+  let responseHandler = new SecurityCommentResultHandler(res);
   _db.findSecurityCommentsForSymbol(req.params.symbol, responseHandler);
 }
 
 export function persistSecurityComment(req: Request, res: Response) {
   let responseHandler = new DefaultResponseHandler(res);
-  _db.persistSecurityComment(req.body.symbol, req.body.comment, responseHandler);
+  
+  _db.persistSecurityComment(req.body.symbol, req.body.comment, req.user.id, responseHandler);
+
+  let userAlias: string = _alias.mapIdToUser(req.user.id);
+  let msg: string = req.body.symbol + ' | ' + req.body.comment
+  _slack.postMessageToLiveTradeIdeas(userAlias, msg);
 }
 
 export function deleteSecurityComment(req: Request, res: Response) {
