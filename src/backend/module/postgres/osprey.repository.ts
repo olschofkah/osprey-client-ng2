@@ -29,8 +29,10 @@ export class OspreyRepository {
         winston.info("Fetching latest hot shit for today ... ");
 
         let query = {
-            text: `select array_to_json(array_agg(payload)) as payload from tha_hot_shit where deleted = FALSE and 
-            ( date = (select max(date) from tha_hot_shit) or date = '19700101' );`,
+            text: `select array_to_json(array_agg(payload)) as payload
+              from tha_hot_shit hot
+              where not exists (select 1 from tha_hot_shit_ignore hoti where hoti.symbol = hot.symbol and hoti.date = hot.date )
+              and ( hot.date = (select max(date) from tha_hot_shit) or hot.date = '19700101' );`,
             params: []
         };
         return this.execute(query, rh);
@@ -40,7 +42,10 @@ export class OspreyRepository {
         winston.info("Fetching latest hot shit for today ... ");
 
         let query = {
-            text: 'select array_to_json(array_agg(payload)) as payload from tha_hot_shit where deleted = FALSE and date = $1;',
+            text: `select array_to_json(array_agg(payload)) as payload
+              from tha_hot_shit hot
+              where not exists (select 1 from tha_hot_shit_ignore hoti where hoti.symbol = hot.symbol and hoti.date = hot.date )
+              and hot.date = $1;`,
             params: [date]
         };
         return this.execute(query, rh);
@@ -50,9 +55,9 @@ export class OspreyRepository {
         winston.debug("deleting hotlist for symbol " + symbol + " and date " + date);
 
         let query = {
-            text: `update tha_hot_shit 
-            set deleted = TRUE, timestamp = clock_timestamp()
-            where symbol = $1 and date = $2`,
+            text: `insert into tha_hot_shit_ignore
+            (symbol, date, timestamp, deleted)
+            values ($1, $2, clock_timestamp(), TRUE);`,
             params: [symbol, date]
         };
         return this.execute(query, rh);
@@ -62,7 +67,7 @@ export class OspreyRepository {
         winston.debug("Inserting into hotlist for symbol " + hotListItem.key.symbol);
 
         let query = {
-            text: `insert into tha_hot_shit values ($1, '19700101', clock_timestamp(), $2, FALSE)`,
+            text: `insert into tha_hot_shit values ($1, '19700101', clock_timestamp(), $2)`,
             params: [hotListItem.key.symbol, JSON.stringify(hotListItem)]
         };
         return this.execute(query, rh);

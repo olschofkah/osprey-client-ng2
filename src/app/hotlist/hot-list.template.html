@@ -33,9 +33,11 @@
                     <button class="btn btn-warning text text-right" (click)="deleteSelectedItem()">Ignore {{selectedItem.key.symbol}}</button>
                 </div>
             </div>
-            <hot-list-item [target]="selectedItem"></hot-list-item>
-            <stock-chart *ngIf='selectedItem' [target]="selectedItem"></stock-chart>
-            <security-comment-symbol [target]="selectedItem?.key?.symbol"></security-comment-symbol>
+            <div *ngIf='selectedItem'>
+                <hot-list-item [target]="selectedItem"></hot-list-item>
+                <stock-chart [target]="selectedItem"></stock-chart>
+                <security-comment-symbol [target]="selectedItem?.key?.symbol"></security-comment-symbol>
+            </div>
         </div>
     </div>
 </div>
