@@ -50,6 +50,9 @@
         <h4 class="text text-primary">Momentum</h4>
         {"criteriaBucket":{"type":"MOMENTUM_X","period1":2,"range":2,"crossoverPoint":0,"direction":"FROM_BELOW_TO_ABOVE"} }
         <br>{"criteriaBucket":{"type":"RSI","period":14,"periodRange":5,"rsiComparison":70,"relationalOperator":"_GE"} }
+        <br>{"criteriaBucket":{"type":"STOCHASTICS_FULL_LEVEL","periodLookBack":20,"periodK":5,"periodD":5,"range":1,"level":80,"relationalOperator":"_GE"} }
+        <br>{"criteriaBucket":{"type":"STOCHASTICS_FULL_LEVEL_CROSS","periodLookBack":14,"periodK":3,"periodD":3,"range":1,"level":80,"direction":"FROM_BELOW_TO_ABOVE"} }
+        <br>{"criteriaBucket":{"type":"STOCHASTICS_FULL_SIGNAL_CROSS","periodLookBack":14,"periodK":3,"periodD":3,"range":1,"direction":"FROM_BELOW_TO_ABOVE"} }
 
         <h4 class="text text-primary">Fundamentals</h4>
         {"criteriaBucket":{"type":"BETA","betaComparison":0.8,"relationalOperator":"_GT"} }
