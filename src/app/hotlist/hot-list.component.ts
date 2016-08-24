@@ -34,6 +34,7 @@ export class HotList {
   private newSymbol: string;
 
   hotListItemsArray: any[] = [];
+  modelNames: string[] = [];
   hotListItems: { [id: string]: HotListItem[] } = {};
   selectedItem: HotListItem;
 
@@ -100,9 +101,13 @@ export class HotList {
           let screen = data[i].namedScreenSets[j];
           if (!this.hotListItems[screen]) {
             this.hotListItems[screen] = [];
-            this.hotListItemsArray.push(this.hotListItems[screen]);
+            this.hotListItemsArray.push(
+              {
+                title: screen,
+                securitySet: this.hotListItems[screen]
+              }
+            );
           }
-          data[i].groupedScreen = screen;
           this.hotListItems[screen].push(data[i]);
         }
       }
@@ -111,8 +116,8 @@ export class HotList {
     // bubble sort group list
     for (let m: number = this.hotListItemsArray.length; m > 0; --m) {
       for (let n: number = 0; n < m - 1; ++n) {
-        if (this.hotListItemsArray[n][0].groupedScreen.localeCompare(this.hotListItemsArray[n + 1][0].groupedScreen) > 0
-          && this.hotListItemsArray[n][0].groupedScreen !== this.MANUAL_MODEL_NAME) {
+        if (this.hotListItemsArray[n].title.localeCompare(this.hotListItemsArray[n + 1].title) > 0
+          && this.hotListItemsArray[n].title !== this.MANUAL_MODEL_NAME) {
           let tmp: any = this.hotListItemsArray[n + 1];
           this.hotListItemsArray[n + 1] = this.hotListItemsArray[n];
           this.hotListItemsArray[n] = tmp;
@@ -123,7 +128,7 @@ export class HotList {
     // bubble sort symbol lists
     let group: any;
     for (let p: number = 0; p < this.hotListItemsArray.length; ++p) {
-      group = this.hotListItemsArray[p]
+      group = this.hotListItemsArray[p].securitySet;
       for (let m: number = group.length; m > 0; --m) {
         for (let n: number = 0; n < m - 1; ++n) {
           if (group[n].key.symbol.localeCompare(group[n + 1].key.symbol) > 0) {

@@ -6,13 +6,13 @@
                     <br>
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            {{hotItemScreenSet[0]?.groupedScreen}} | {{hotItemScreenSet?.length}}
+                            {{hotItemScreenSet.title}} | {{hotItemScreenSet?.securitySet.length}}
                         </div>
                     </div>
 
                     <div class="row">
                         <div [ngClass]="{'btn-default': !hotItem.selected || hotItem.selected == false, 'btn-info': hotItem.selected && hotItem !== selectedItem, 'btn-primary': hotItem === selectedItem}"
-                            class="col-md-2 btn" *ngFor="let hotItem of hotItemScreenSet" (click)="onSelect(hotItem)">
+                            class="col-md-2 btn" *ngFor="let hotItem of hotItemScreenSet.securitySet" (click)="onSelect(hotItem)">
                             {{hotItem?.key.symbol}}
                         </div>
                     </div>
