@@ -199,7 +199,7 @@ export class OspreyRepository {
                         f.average_volume as averagevolume,
                         f.held_pct_insiders as pctinsiders,
                         f.held_pct_institutions as pctinst,
-                        f.short_percent_of_float as pctshortfloat,
+                        f.buy_info_shares - f.sell_info_shares as netinfoshares,
                         f.trailing_pe as trailingpe,
                         f.forward_pe as forwardpe,
                         f.div_yield as divyield,
