@@ -175,7 +175,7 @@ export class HotList {
     if (this.selectedItem) {
 
       for (let i = 0; i < this.hotListItemsArray.length; i++) {
-        let innerArray: any[] = this.hotListItemsArray[i];
+        let innerArray: any[] = this.hotListItemsArray[i].securitySet;
         for (let ii = 0; ii < innerArray.length; ii++) {
           if (innerArray[ii].key.symbol == this.selectedItem.key.symbol) {
             innerArray.splice(ii, 1);
