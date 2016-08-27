@@ -12,32 +12,16 @@
 
                     <div class="row">
                         <div [ngClass]="{
-                                'btn-default': (!hotItem.selected || hotItem.selected == false),
+                                'btn-default': (!hotItem.selected || hotItem.selected == false), 
                                 'btn-heatmap-0': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 0, 
                                 'btn-heatmap-1': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 1, 
                                 'btn-heatmap-2': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 2, 
                                 'btn-heatmap-3': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 3, 
                                 'btn-heatmap-4': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 4, 
-                                'btn-heatmap-5': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 5, 
-                                'btn-heatmap-6': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 6, 
+                                'btn-heatmap-5': (!hotItem.selected || hotItem.selected == false) && (hotItem.recentCount >= 5 && hotItem.recentCount < 10), 
+                                'btn-heatmap-6': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount >= 10, 
                                 'btn-info': hotItem.selected && hotItem !== selectedItem,
                                 'btn-primary': hotItem === selectedItem
-                                }" [ngClass]="{
-                                'btn-heatmap-7': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 7, 
-                                'btn-heatmap-8': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 8, 
-                                'btn-heatmap-9': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 9, 
-                                'btn-heatmap-10': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 10, 
-                                'btn-heatmap-11': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 11, 
-                                'btn-heatmap-12': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 12, 
-                                'btn-heatmap-13': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 13, 
-                                'btn-heatmap-14': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 14, 
-                                'btn-heatmap-15': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 15 
-                                }" [ngClass]="{
-                                'btn-heatmap-10': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 16, 
-                                'btn-heatmap-11': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 17, 
-                                'btn-heatmap-12': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 18, 
-                                'btn-heatmap-13': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 19, 
-                                'btn-heatmap-14': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount >= 20
                                 }" class="col-md-2 btn" *ngFor="let hotItem of hotItemScreenSet.securitySet" (click)="onSelect(hotItem)">
                             {{hotItem?.key.symbol}}
                         </div>
