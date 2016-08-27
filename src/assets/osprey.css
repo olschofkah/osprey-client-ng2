@@ -21,39 +21,109 @@ html, body {
 	-webkit-border-radius: 5px;
 }
 
-.btn-gray-0 {
+.btn-heatmap-0 {
     color: #000000;
-    background-color: #ffffff;
-    border-color: #808080;
+    background-color: #ff6666;
+    border-color: #000f1a;
 }
 
-.btn-gray-1 {
+.btn-heatmap-1 {
     color: #000000;
-    background-color: #f2f2f2;
-    border-color: #808080;
+    background-color: #ffb3b3;
+    border-color: #000f1a;
 }
-.btn-gray-2 {
+.btn-heatmap-2 {
     color: #000000;
-    background-color: #e6e6e6;
-    border-color: #808080;
+    background-color: #ffe6e6 ;
+    border-color: #000f1a;
 }
-.btn-gray-3 {
+.btn-heatmap-3 {
     color: #000000;
-    background-color: #d9d9d9;
-    border-color: #808080;
+    background-color: #e6f2ff;
+    border-color: #000f1a;
 }
-.btn-gray-4 {
+.btn-heatmap-4 {
     color: #000000;
-    background-color: #cccccc;
-    border-color: #808080;
+    background-color: #b3d7ff;
+    border-color: #000f1a;
 }
-.btn-gray-5 {
+.btn-heatmap-5 {
     color: #000000;
-    background-color: #bfbfbf;
-    border-color: #808080;
+    background-color:  #80bbff;
+    border-color: #000f1a;
 }
-.btn-gray-6 {
+.btn-heatmap-6 {
     color: #000000;
-    background-color: #b3b3b3;
-    border-color: #808080;
+    background-color: #3392ff;
+    border-color: #000f1a;
+}
+.btn-heatmap-7 {
+    color: #000000;
+    background-color: #3392ff;
+    border-color: #000f1a;
+}
+.btn-heatmap-8 {
+    color: #000000;
+    background-color: #3392ff;
+    border-color: #000f1a;
+}
+.btn-heatmap-9 {
+    color: #000000;
+    background-color: #3392ff;
+    border-color: #000f1a;
+}
+.btn-heatmap-10 {
+    color: #ffffff;
+    background-color: #004799;
+    border-color: #000f1a;
+}
+.btn-heatmap-11 {
+    color: #ffffff;
+    background-color: #004799;
+    border-color: #000f1a;
+}
+.btn-heatmap-12 {
+    color: #ffffff;
+    background-color: #004799;
+    border-color: #000f1a;
+}
+.btn-heatmap-13 {
+    color: #ffffff;
+    background-color: #004799;
+    border-color: #000f1a;
+}
+.btn-heatmap-14 {
+    color: #ffffff;
+    background-color:  #004799;
+    border-color: #000f1a;
+}
+.btn-heatmap-15 {
+    color: #ffffff;
+    background-color: #00244d;
+    border-color: #000f1a;
+}
+.btn-heatmap-16 {
+    color: #ffffff;
+    background-color: #00244d;
+    border-color: #000f1a;
+}
+.btn-heatmap-17 {
+    color: #ffffff;
+    background-color: #00244d;
+    border-color: #000f1a;
+}
+.btn-heatmap-18 {
+    color: #ffffff;
+    background-color: #00244d;
+    border-color: #000f1a;
+}
+.btn-heatmap-19 {
+    color: #ffffff;
+    background-color: #00244d;
+    border-color: #000f1a;
+}
+.btn-heatmap-20 {
+    color: #ffffff;
+    background-color: #00244d;
+    border-color: #000f1a;
 }
