@@ -69,8 +69,10 @@
                 </div>
                 <div *ngIf="!summaryDetail?.earningshighdate && summaryDetail?.earningslowdate" class="col-md-3 text"><label>Next Earnings</label>: {{summaryDetail?.earningslowdate }} </div>
                 <div *ngIf="summaryDetail?.earningshighdate && !summaryDetail?.earningslowdate" class="col-md-3 text"><label>Next Earnings</label>: {{summaryDetail?.earningshighdate }} </div>
-                <div class="col-md-3 text"></div>
-                <div class="col-md-3 text"><label>Rotation Indicator</label>: {{summaryDetail?.rotationindicator | number:'1.3' }}</div>
+                <div *ngIf="!summaryDetail?.earningsavgpct" class="col-md-3 text"></div>
+                <div *ngIf="summaryDetail?.earningsavgpct" class="col-md-3 text"><label>Earnings Avg Move</label>: {{summaryDetail?.earningsavgpct | percent:'1.3' }}</div>
+                <div *ngIf="!summaryDetail?.earningsvolatility" class="col-md-3 text"></div>
+                <div *ngIf="summaryDetail?.earningsvolatility" class="col-md-3 text"><label>Earnings Volatility</label>: {{summaryDetail?.earningsvolatility | number:'1.3' }}</div>
             </div>
         </div>
     </div>
