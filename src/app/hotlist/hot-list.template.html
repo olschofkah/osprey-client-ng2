@@ -20,7 +20,7 @@
                                 'btn-heatmap-4': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 4, 
                                 'btn-heatmap-5': (!hotItem.selected || hotItem.selected == false) && (hotItem.recentCount >= 5 && hotItem.recentCount < 10), 
                                 'btn-heatmap-6': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount >= 10, 
-                                'btn-info': hotItem.selected && hotItem !== selectedItem,
+                                'btn-previous': hotItem.selected && hotItem !== selectedItem,
                                 'btn-primary': hotItem === selectedItem
                                 }" class="col-md-2 btn" *ngFor="let hotItem of hotItemScreenSet.securitySet" (click)="onSelect(hotItem)">
                             {{hotItem?.key.symbol}}

@@ -21,6 +21,12 @@ html, body {
 	-webkit-border-radius: 5px;
 }
 
+.btn-previous {
+    color: #ffffff;
+    background-color: #808080;
+    border-color: #000f1a;
+}
+
 .btn-heatmap-0 {
     color: #000000;
     background-color: #ff6666;
