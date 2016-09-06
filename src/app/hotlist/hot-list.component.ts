@@ -36,6 +36,7 @@ export class HotList {
   hotListItemsArray: any[] = [];
   modelNames: string[] = [];
   hotListItems: { [id: string]: HotListItem[] } = {};
+  heatmap: { [id: string]: { [symbol: string]: number } } = {};
   selectedItem: HotListItem;
 
   onSelect(item: HotListItem) {
@@ -58,7 +59,7 @@ export class HotList {
 
           // Find the date of the load
           for (let i = 0; i < data.length; ++i) {
-            if (data[i].namedScreenSets[0] !== this.MANUAL_MODEL_NAME) {
+            if (data[i].models[0].modelName !== this.MANUAL_MODEL_NAME) {
               this.loadDate = new Date(data[i].reportDate).toISOString().substr(0, 10);
               break;
             }
@@ -76,6 +77,7 @@ export class HotList {
   loadHistorical() {
 
     this.hotListItems = {};
+    this.heatmap = {};
     this.hotListItemsArray.splice(0, this.hotListItemsArray.length);
 
     this.apiService.getHotListForDate(this.loadDate)
@@ -96,28 +98,29 @@ export class HotList {
   loadData(data: any): void {
 
     for (let i = 0; i < data.length; ++i) {
-      for (let j = 0; j < data[i].namedScreenSets.length; ++j) {
-        if (data[i].namedScreenSets[j]) {
-          let screen = data[i].namedScreenSets[j];
-          if (!this.hotListItems[screen]) {
-            this.hotListItems[screen] = [];
-            this.hotListItemsArray.push(
-              {
-                title: screen,
-                securitySet: this.hotListItems[screen]
-              }
-            );
-          }
-          this.hotListItems[screen].push(data[i]);
+      for (let j = 0; j < data[i].models.length; ++j) {
+        let modelName = data[i].models[j].modelName;
+        if (!this.hotListItems[modelName]) {
+          this.hotListItems[modelName] = [];
+          this.heatmap[modelName] = {};
+          this.hotListItemsArray.push(
+            {
+              title: modelName,
+              securitySet: this.hotListItems[modelName]
+            }
+          );
         }
+        this.heatmap[modelName][data[i].key.symbol] = data[i].models[j].recentOccurrence;
+        this.hotListItems[modelName].push(data[i]);
       }
     }
 
     // bubble sort group list
     for (let m: number = this.hotListItemsArray.length; m > 0; --m) {
       for (let n: number = 0; n < m - 1; ++n) {
-        if (this.hotListItemsArray[n].title.localeCompare(this.hotListItemsArray[n + 1].title) > 0
-          && this.hotListItemsArray[n].title !== this.MANUAL_MODEL_NAME) {
+        if ((this.hotListItemsArray[n].title.localeCompare(this.hotListItemsArray[n + 1].title) > 0
+          && this.hotListItemsArray[n].title !== this.MANUAL_MODEL_NAME)
+          || this.hotListItemsArray[n + 1].title === this.MANUAL_MODEL_NAME) {
           let tmp: any = this.hotListItemsArray[n + 1];
           this.hotListItemsArray[n + 1] = this.hotListItemsArray[n];
           this.hotListItemsArray[n] = tmp;
@@ -143,10 +146,11 @@ export class HotList {
 
   addSymbol() {
     let key: any = { symbol: this.newSymbol, cusip: '' };
+    let modelStat: any = { modelName: this.MANUAL_MODEL_NAME, recentOccurrence: -1 };
 
     let newItem: HotListItem = new HotListItem(
       key,
-      [this.MANUAL_MODEL_NAME],
+      [modelStat],
       [],
       this.MANUAL_MODEL_NAME,
       false,

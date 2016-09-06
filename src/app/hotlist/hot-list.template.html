@@ -13,13 +13,13 @@
                     <div class="row">
                         <div [ngClass]="{
                                 'btn-default': (!hotItem.selected || hotItem.selected == false), 
-                                'btn-heatmap-0': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 0, 
-                                'btn-heatmap-1': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 1, 
-                                'btn-heatmap-2': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 2, 
-                                'btn-heatmap-3': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 3, 
-                                'btn-heatmap-4': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount == 4, 
-                                'btn-heatmap-5': (!hotItem.selected || hotItem.selected == false) && (hotItem.recentCount >= 5 && hotItem.recentCount < 10), 
-                                'btn-heatmap-6': (!hotItem.selected || hotItem.selected == false) && hotItem.recentCount >= 10, 
+                                'btn-heatmap-0': (!hotItem.selected || hotItem.selected == false) && heatmap[hotItemScreenSet.title][hotItem.key.symbol] == 0, 
+                                'btn-heatmap-1': (!hotItem.selected || hotItem.selected == false) && heatmap[hotItemScreenSet.title][hotItem.key.symbol] == 1, 
+                                'btn-heatmap-2': (!hotItem.selected || hotItem.selected == false) && heatmap[hotItemScreenSet.title][hotItem.key.symbol] == 2, 
+                                'btn-heatmap-3': (!hotItem.selected || hotItem.selected == false) && heatmap[hotItemScreenSet.title][hotItem.key.symbol] == 3, 
+                                'btn-heatmap-4': (!hotItem.selected || hotItem.selected == false) && heatmap[hotItemScreenSet.title][hotItem.key.symbol] == 4, 
+                                'btn-heatmap-5': (!hotItem.selected || hotItem.selected == false) && (heatmap[hotItemScreenSet.title][hotItem.key.symbol] >= 5 && heatmap[hotItemScreenSet.title][hotItem.key.symbol] < 10), 
+                                'btn-heatmap-6': (!hotItem.selected || hotItem.selected == false) && heatmap[hotItemScreenSet.title][hotItem.key.symbol] >= 10, 
                                 'btn-previous': hotItem.selected && hotItem !== selectedItem,
                                 'btn-primary': hotItem === selectedItem
                                 }" class="col-md-2 btn" *ngFor="let hotItem of hotItemScreenSet.securitySet" (click)="onSelect(hotItem)">
