@@ -32,6 +32,7 @@ export class HotList {
 
   public MANUAL_MODEL_NAME: string = 'Manual Watch';
   private newSymbol: string;
+  private quoteRequest: string;
 
   hotListItemsArray: any[] = [];
   modelNames: string[] = [];
@@ -142,6 +143,26 @@ export class HotList {
         }
       }
     }
+  }
+
+  quote() {
+    let key: any = { symbol: this.quoteRequest, cusip: '' };
+    let modelStat: any = { modelName: 'quote', recentOccurrence: -1 };
+
+    let newItem: HotListItem = new HotListItem(
+      key,
+      [modelStat],
+      [],
+      this.MANUAL_MODEL_NAME,
+      true,
+      false,
+      new Date(1970, 0, 1)
+    );
+
+    this.selectedItem.selected = false;
+    this.selectedItem = newItem;
+
+    this.quoteRequest = null;
   }
 
   addSymbol() {
