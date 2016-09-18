@@ -24,7 +24,9 @@
         <br>{"criteriaBucket":{"type":"SECTOR","sectors":["Healthcare","Technology"],"contains":true} }
 
         <h4 class="text text-primary">Moving Averages</h4>
-        {"criteriaBucket":{"type":"EMA","period1":10,"period2":50,"relationalOperator":"_GT"} }
+        <br>{"criteriaBucket":{"type":"BOLLINGER_BAND_LEVEL","period":20,"multiplier":2.0,"maType":"EMA","band":"UPPER_BAND","range":2,"direction":"FROM_BELOW_TO_ABOVE"} }
+        <br>{"criteriaBucket":{"type":"BOLLINGER_BAND_X","period":20,"multiplier":2.0,"maType":"SMA","band":"LOWER_BAND","range":2,"relationalOperator":"_GT"} }
+        <br>{"criteriaBucket":{"type":"EMA","period1":10,"period2":50,"relationalOperator":"_GT"} }
         <br>{"criteriaBucket":{"type":"EMA_PCT_BANDS","period1":20,"range":2,"bandPercent":0.03,"direction":"FROM_BELOW_TO_ABOVE","band":"LOWER_BAND"} }
         <br>{"criteriaBucket":{"type":"EMA_VS_PRICE","period1":15,"relationalOperator":"_LT"} }
         <br>{"criteriaBucket":{"type":"EMA_X","period1":15,"period2":50,"range":2,"direction":"FROM_ABOVE_TO_BELOW"} }
