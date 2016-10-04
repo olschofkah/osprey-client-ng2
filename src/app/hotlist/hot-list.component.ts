@@ -22,7 +22,7 @@ import {Observable} from 'rxjs/Observable';
   providers: [OspreyApiService, Logger]
 })
 export class HotList {
-  title = 'tha hot shit';
+  title = 'tha hot list';
 
   constructor(private apiService: OspreyApiService, private log: Logger, private clientAlertService: ClientAlertService) {
   }

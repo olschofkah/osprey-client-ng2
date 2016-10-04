@@ -26,25 +26,25 @@ export class OspreyRepository {
     }
 
     public findMostRecentHotlist(rh: PostgresResultHandler) {
-        winston.info("Fetching latest hot shit for today ... ");
+        winston.info("Fetching latest hot list for today ... ");
 
         let query = {
             text: `select array_to_json(array_agg(payload)) as payload
-              from tha_hot_shit hot
-              where not exists (select 1 from tha_hot_shit_ignore hoti where hoti.symbol = hot.symbol and hoti.date = hot.date )
-              and ( hot.date = (select max(date) from tha_hot_shit) or hot.date = '19700101' );`,
+              from tha_hot_list hot
+              where not exists (select 1 from tha_hot_list_ignore hoti where hoti.symbol = hot.symbol and hoti.date = hot.date )
+              and ( hot.date = (select max(date) from tha_hot_list) or hot.date = '19700101' );`,
             params: []
         };
         return this.execute(query, rh);
     }
 
     public findHotlistForDate(date: Date, rh: PostgresResultHandler) {
-        winston.info("Fetching latest hot shit for today ... ");
+        winston.info("Fetching latest hot list for today ... ");
 
         let query = {
             text: `select array_to_json(array_agg(payload)) as payload
-              from tha_hot_shit hot
-              where not exists (select 1 from tha_hot_shit_ignore hoti where hoti.symbol = hot.symbol and hoti.date = hot.date )
+              from tha_hot_list hot
+              where not exists (select 1 from tha_hot_list_ignore hoti where hoti.symbol = hot.symbol and hoti.date = hot.date )
               and hot.date = $1;`,
             params: [date]
         };
@@ -55,7 +55,7 @@ export class OspreyRepository {
         winston.debug("deleting hotlist for symbol " + symbol + " and date " + date);
 
         let query = {
-            text: `insert into tha_hot_shit_ignore
+            text: `insert into tha_hot_list_ignore
             (symbol, date, timestamp, deleted)
             values ($1, $2, clock_timestamp(), TRUE);`,
             params: [symbol, date]
@@ -67,7 +67,7 @@ export class OspreyRepository {
         winston.debug("Inserting into hotlist for symbol " + hotListItem.key.symbol);
 
         let query = {
-            text: `insert into tha_hot_shit values ($1, '19700101', clock_timestamp(), $2)`,
+            text: `insert into tha_hot_list values ($1, '19700101', clock_timestamp(), $2)`,
             params: [hotListItem.key.symbol, JSON.stringify(hotListItem)]
         };
         return this.execute(query, rh);
