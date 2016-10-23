@@ -8,6 +8,7 @@
       <li><a *ngIf="authService.isLoggedIn == true" routerLinkActive="active" routerLink="/blacklist">Black List</a></li>
       <li><a *ngIf="authService.isLoggedIn == true" routerLinkActive="active" routerLink="/modelscreens">Models</a></li>
       <li><a *ngIf="authService.isLoggedIn == true" routerLinkActive="active" routerLink="/notes">Notes</a></li>
+      <li><a *ngIf="authService.isLoggedIn == true" routerLinkActive="active" routerLink="/macro">Macro</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a *ngIf="authService.isLoggedIn == false" routerLinkActive="active" routerLink="/login">Log in</a></li>
@@ -22,4 +23,8 @@
   </main>
 </div>
 <footer>
+  <div *ngIf="authService.isLoggedIn == true" class="text text-center">
+    <iframe frameborder="0" scrolling="no" height="62" width="860" allowtransparency="true" marginwidth="0" marginheight="0"
+      src="http://tools.investing.com/quotes_bar.php?tab_1=1,2,3,5,7&tab_2=8830,8831,8836,8849,8862&tab_3=166,172,27,170&curr-name-color=%230059B0&inner-text-color=%23666666&green-text-color=%23008000&red-text-color=%23FF0000"></iframe>
+  </div>
 </footer>

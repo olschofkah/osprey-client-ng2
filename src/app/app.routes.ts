@@ -3,6 +3,7 @@ import { Home } from './home';
 import { HotList } from './hotlist';
 import { BlackList } from './blacklist';
 import { SecurityCommentMaster } from './securitycomment';
+import { MacroComponent } from './macro'
 import { ModelScreens } from './modelscreens';
 import { Login } from './login';
 
@@ -19,6 +20,7 @@ export const routes: RouterConfig = [
   { path: 'blacklist', component: BlackList },
   { path: 'modelscreens', component: ModelScreens },
   { path: 'notes', component: SecurityCommentMaster },
+  { path: 'macro', component: MacroComponent },
   { path: 'error/403', component: _403Error },
   { path: '**', redirectTo: 'home' }
 ];
